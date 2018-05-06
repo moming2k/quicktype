@@ -528,7 +528,7 @@ export class SwiftRenderer extends ConvenienceRenderer {
                 this.forEachClassProperty(c, "none", (name, jsonName, p) => {
                     const description = this.descriptionForClassProperty(c, jsonName);
                     this.emitDescription(description);
-                    this.emitLine(this.accessLevel, "var ", name, ": ", swiftType(p));
+                    this.emitLine(this.accessLevel, "var ", name, ": ", swiftTypeForceOptional(p));
                 });
             }
 

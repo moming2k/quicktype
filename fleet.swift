@@ -39,7 +39,24 @@ public class JobApplication: Codable {
     public var personalInformation: PersonalInformation?
     public var quickVersion: QuickVersion?
     public var seaServiceExperience: SeaServiceExperience?
-    public var submitDate, submitID, type: String?
+    public var submitDate: String?
+    public var submitID: String?
+    public var type: String?
+
+    enum CodingKeys: String, CodingKey {
+        case appliedPosition = "appliedPosition"
+        case certificatesOfCompetency = "certificatesOfCompetency"
+        case contactInformation = "contactInformation"
+        case familyData = "familyData"
+        case nextOfKin = "nextOfKin"
+        case passportVisa = "passportVisa"
+        case personalInformation = "personalInformation"
+        case quickVersion = "quickVersion"
+        case seaServiceExperience = "seaServiceExperience"
+        case submitDate = "submitDate"
+        case submitID = "submitID"
+        case type = "type"
+    }
 
     public init() {
         self.appliedPosition = AppliedPosition()
@@ -116,11 +133,25 @@ public class CertificatesOfCompetency: Codable {
 }
 
 public class ContactInformation: Codable {
-    public var contactInformationCityLocal, contactInformationCityPermanent, contactInformationCountryLocal, contactInformationCountryPermanent: String?
-    public var contactInformationEmail, contactInformationPhoneHomeLocal, contactInformationPhoneHomePermanent, contactInformationPhoneHomeQuickapply: String?
-    public var contactInformationPhoneMobileLocal, contactInformationPhoneMobilePermanent, contactInformationPhoneMobileQuickapply, contactInformationPostcodeLocal: String?
-    public var contactInformationPostcodePermanent, contactInformationStateLocal, contactInformationStatePermanent, contactInformationStreetFirstLocal: String?
-    public var contactInformationStreetFirstPermanent, contactInformationStreetSecondLocal, contactInformationStreetSecondPermanent: String?
+    public var contactInformationCityLocal: String?
+    public var contactInformationCityPermanent: String?
+    public var contactInformationCountryLocal: String?
+    public var contactInformationCountryPermanent: String?
+    public var contactInformationEmail: String?
+    public var contactInformationPhoneHomeLocal: String?
+    public var contactInformationPhoneHomePermanent: String?
+    public var contactInformationPhoneHomeQuickapply: String?
+    public var contactInformationPhoneMobileLocal: String?
+    public var contactInformationPhoneMobilePermanent: String?
+    public var contactInformationPhoneMobileQuickapply: String?
+    public var contactInformationPostcodeLocal: String?
+    public var contactInformationPostcodePermanent: String?
+    public var contactInformationStateLocal: String?
+    public var contactInformationStatePermanent: String?
+    public var contactInformationStreetFirstLocal: String?
+    public var contactInformationStreetFirstPermanent: String?
+    public var contactInformationStreetSecondLocal: String?
+    public var contactInformationStreetSecondPermanent: String?
 
     enum CodingKeys: String, CodingKey {
         case contactInformationCityLocal = "contactInformation_city_local"
@@ -208,8 +239,12 @@ public class FamilyData: Codable {
 }
 
 public class FamilyDataMember: Codable {
-    public var familyDataDateOfBirth, familyDataDateOfExpiry, familyDataFirstName, familyDataLastName: String?
-    public var familyDataPassportNumber, familyDataPlaceOfIssue: String?
+    public var familyDataDateOfBirth: String?
+    public var familyDataDateOfExpiry: String?
+    public var familyDataFirstName: String?
+    public var familyDataLastName: String?
+    public var familyDataPassportNumber: String?
+    public var familyDataPlaceOfIssue: String?
 
     enum CodingKeys: String, CodingKey {
         case familyDataDateOfBirth = "familyData_date_of_birth"
@@ -241,9 +276,18 @@ public class FamilyDataMember: Codable {
 }
 
 public class NextOfKin: Codable {
-    public var nextOfKinCity, nextOfKinCountry, nextOfKinDateOfBirth, nextOfKinName: String?
-    public var nextOfKinNameAlternate, nextOfKinPhoneHome, nextOfKinPhoneMobile, nextOfKinPostcode: String?
-    public var nextOfKinRelationship, nextOfKinRelationshipAlternate, nextOfKinState, nextOfKinStreetFirst: String?
+    public var nextOfKinCity: String?
+    public var nextOfKinCountry: String?
+    public var nextOfKinDateOfBirth: String?
+    public var nextOfKinName: String?
+    public var nextOfKinNameAlternate: String?
+    public var nextOfKinPhoneHome: String?
+    public var nextOfKinPhoneMobile: String?
+    public var nextOfKinPostcode: String?
+    public var nextOfKinRelationship: String?
+    public var nextOfKinRelationshipAlternate: String?
+    public var nextOfKinState: String?
+    public var nextOfKinStreetFirst: String?
     public var nextOfKinStreetSecond: String?
 
     enum CodingKeys: String, CodingKey {
@@ -298,9 +342,12 @@ public class NextOfKin: Codable {
 
 public class PassportVisa: Codable {
     public var passportAustralianMaritimeCrewVisa: Bool?
-    public var passportCountry, passportDateOfExpiry, passportDateOfIssue: String?
+    public var passportCountry: String?
+    public var passportDateOfExpiry: String?
+    public var passportDateOfIssue: String?
     public var passportEcnr: Bool?
-    public var passportNumber, passportPlaceOfIssue: String?
+    public var passportNumber: String?
+    public var passportPlaceOfIssue: String?
     public var passportUSVisaCD: Bool?
     public var passportUSVisaCDDateOfExpiry: String?
 
@@ -343,11 +390,23 @@ public class PassportVisa: Codable {
 }
 
 public class PersonalInformation: Codable {
-    public var personalDetailsBloodGroup, personalDetailsBoilerSuitSize, personalDetailsDateOfBirth, personalDetailsFirstName: String?
-    public var personalDetailsHeight, personalDetailsLastName, personalDetailsMiddleName, personalDetailsNationality: String?
-    public var personalDetailsPlaceOfBirth, personalDetailsShoeSize: String?
-    public var personalDetailsSmoker, personalDetailsUnionMembership, personalDetailsVegetarian: Bool?
-    public var personalDetailsWeight, personalDetailsYellowFeverVaccinationBATCHLOTNumber, personalDetailsYellowFeverVaccinationDateOfExpiry, personalDetailsYellowFeverVaccinationDateOfIssue: String?
+    public var personalDetailsBloodGroup: String?
+    public var personalDetailsBoilerSuitSize: String?
+    public var personalDetailsDateOfBirth: String?
+    public var personalDetailsFirstName: String?
+    public var personalDetailsHeight: String?
+    public var personalDetailsLastName: String?
+    public var personalDetailsMiddleName: String?
+    public var personalDetailsNationality: String?
+    public var personalDetailsPlaceOfBirth: String?
+    public var personalDetailsShoeSize: String?
+    public var personalDetailsSmoker: Bool?
+    public var personalDetailsUnionMembership: Bool?
+    public var personalDetailsVegetarian: Bool?
+    public var personalDetailsWeight: String?
+    public var personalDetailsYellowFeverVaccinationBATCHLOTNumber: String?
+    public var personalDetailsYellowFeverVaccinationDateOfExpiry: String?
+    public var personalDetailsYellowFeverVaccinationDateOfIssue: String?
 
     enum CodingKeys: String, CodingKey {
         case personalDetailsBloodGroup = "personalDetails_bloodGroup"
@@ -412,7 +471,9 @@ public class PersonalInformation: Codable {
 }
 
 public class QuickVersion: Codable {
-    public var quickApplicationNearestOffice, quickApplicationRemarks, quickApplicationYearsOfExperience: String?
+    public var quickApplicationNearestOffice: String?
+    public var quickApplicationRemarks: String?
+    public var quickApplicationYearsOfExperience: String?
 
     enum CodingKeys: String, CodingKey {
         case quickApplicationNearestOffice = "quickApplication_nearestOffice"
@@ -435,7 +496,10 @@ public class QuickVersion: Codable {
 }
 
 public class SeaServiceExperience: Codable {
-    public var seaServiceExperienceBrakeHorsepower, seaServiceExperienceEngineType, seaServiceExperienceVesselSize, seaServiceExperienceVesselType: String?
+    public var seaServiceExperienceBrakeHorsepower: String?
+    public var seaServiceExperienceEngineType: String?
+    public var seaServiceExperienceVesselSize: String?
+    public var seaServiceExperienceVesselType: String?
 
     enum CodingKeys: String, CodingKey {
         case seaServiceExperienceBrakeHorsepower = "seaServiceExperience_brakeHorsepower"
