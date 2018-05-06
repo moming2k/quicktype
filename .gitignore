@@ -28,3 +28,4 @@ test/fixtures/objective-c/quicktype
 *.xcuserstate
 /bin
 /.node-persist
+/src/.DS_Store
