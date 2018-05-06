@@ -34,6 +34,7 @@ export default class SwiftTargetLanguage extends TargetLanguage {
     private readonly _convenienceInitializers = new BooleanOption("initializers", "Convenience initializers", true);
     private readonly _urlSessionHandlers = new BooleanOption("url-session", "URLSession task extensions", false);
     private readonly _alamofireHandlers = new BooleanOption("alamofire", "Alamofire extensions", false);
+    private readonly _fleetHandlers = new BooleanOption("fleet", "Fleet extensions", true);
     private readonly _namedTypePrefix = new StringOption(
         "type-prefix",
         "Prefix for type names",
@@ -76,6 +77,7 @@ export default class SwiftTargetLanguage extends TargetLanguage {
             this._accessLevelOption,
             this._urlSessionHandlers,
             this._alamofireHandlers,
+            this._fleetHandlers,
             this._namedTypePrefix
         ];
     }
@@ -245,6 +247,7 @@ export class SwiftRenderer extends ConvenienceRenderer {
         private readonly _accessLevel: string,
         private readonly _urlSession: boolean,
         private readonly _alamofire: boolean,
+        private readonly _fleet: boolean,
         private readonly _namedTypePrefix: string
     ) {
         super(targetLanguage, graph, leadingComments);
@@ -473,6 +476,10 @@ export class SwiftRenderer extends ConvenienceRenderer {
             }
         };
 
+        const swiftTypeForceOptional = (p: ClassProperty) => {
+            return [this.swiftType(p.type, true, true), "?"];
+        };
+
         this.emitDescription(this.descriptionForType(c));
 
         const isClass = this._useClasses || this.isCycleBreakerType(c);
@@ -485,13 +492,13 @@ export class SwiftRenderer extends ConvenienceRenderer {
                 const emitLastProperty = () => {
                     if (lastProperty === undefined) return;
 
-                    let sources: Sourcelike[] = [[this.accessLevel, "let "]];
+                    let sources: Sourcelike[] = [[this.accessLevel, "var "]];
                     lastNames.forEach((n, i) => {
                         if (i > 0) sources.push(", ");
                         sources.push(n);
                     });
                     sources.push(": ");
-                    sources.push(swiftType(lastProperty));
+                    sources.push(swiftTypeForceOptional(lastProperty));
                     this.emitLine(sources);
 
                     lastProperty = undefined;
@@ -521,7 +528,7 @@ export class SwiftRenderer extends ConvenienceRenderer {
                 this.forEachClassProperty(c, "none", (name, jsonName, p) => {
                     const description = this.descriptionForClassProperty(c, jsonName);
                     this.emitDescription(description);
-                    this.emitLine(this.accessLevel, "let ", name, ": ", swiftType(p));
+                    this.emitLine(this.accessLevel, "var ", name, ": ", swiftType(p));
                 });
             }
 
@@ -546,6 +553,25 @@ export class SwiftRenderer extends ConvenienceRenderer {
                 }
             }
 
+            // Empty init
+            // this main initializer must be defined within the class
+            // declaration since it assigns let constants
+            if (isClass) {
+                // Make an initializer that initalizes all fields
+                this.ensureBlankLine();
+                let properties: Sourcelike[] = [];
+                this.forEachClassProperty(c, "none", (name, _, p) => {
+                    if (properties.length > 0) properties.push(", ");
+                    properties.push(name, ": ", swiftType(p));
+                });
+                this.emitBlockWithAccess(["init()"], () => {
+                    this.forEachClassProperty(c, "none", (name, _, p) => {
+                        this.emitLine("self.", name, " = ", swiftType(p), "()");
+                    });
+                });
+            }
+
+            // Assign init
             // this main initializer must be defined within the class
             // declaration since it assigns let constants
             if (isClass) {
@@ -562,6 +588,8 @@ export class SwiftRenderer extends ConvenienceRenderer {
                     });
                 });
             }
+
+            this.emitMark("Fleet Related Code", true);
         });
     };
 
@@ -1035,6 +1063,12 @@ ${this.accessLevel}class JSONAny: Codable {
             this.emitMark("Alamofire response handlers", true);
             this.ensureBlankLine();
             this.emitAlamofireExtension();
+        }
+
+        if (this._fleet) {
+            this.ensureBlankLine();
+            this.emitMark("Fleet Management code", true);
+            this.ensureBlankLine();
         }
     }
 

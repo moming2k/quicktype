@@ -29,19 +29,34 @@
 import Foundation
 
 /// Generated from source.json with shasum c696a95adeb0e1d82bb25144518a4f33fe538004
-class JobApplication: Codable {
-    let appliedPosition: AppliedPosition
-    let certificatesOfCompetency: CertificatesOfCompetency
-    let contactInformation: ContactInformation
-    let familyData: FamilyData
-    let nextOfKin: NextOfKin
-    let passportVisa: PassportVisa
-    let personalInformation: PersonalInformation
-    let quickVersion: QuickVersion
-    let seaServiceExperience: SeaServiceExperience
-    let submitDate, submitID, type: String
+public class JobApplication: Codable {
+    public var appliedPosition: AppliedPosition?
+    public var certificatesOfCompetency: CertificatesOfCompetency?
+    public var contactInformation: ContactInformation?
+    public var familyData: FamilyData?
+    public var nextOfKin: NextOfKin?
+    public var passportVisa: PassportVisa?
+    public var personalInformation: PersonalInformation?
+    public var quickVersion: QuickVersion?
+    public var seaServiceExperience: SeaServiceExperience?
+    public var submitDate, submitID, type: String?
 
-    init(appliedPosition: AppliedPosition, certificatesOfCompetency: CertificatesOfCompetency, contactInformation: ContactInformation, familyData: FamilyData, nextOfKin: NextOfKin, passportVisa: PassportVisa, personalInformation: PersonalInformation, quickVersion: QuickVersion, seaServiceExperience: SeaServiceExperience, submitDate: String, submitID: String, type: String) {
+    public init() {
+        self.appliedPosition = AppliedPosition()
+        self.certificatesOfCompetency = CertificatesOfCompetency()
+        self.contactInformation = ContactInformation()
+        self.familyData = FamilyData()
+        self.nextOfKin = NextOfKin()
+        self.passportVisa = PassportVisa()
+        self.personalInformation = PersonalInformation()
+        self.quickVersion = QuickVersion()
+        self.seaServiceExperience = SeaServiceExperience()
+        self.submitDate = String()
+        self.submitID = String()
+        self.type = String()
+    }
+
+    public init(appliedPosition: AppliedPosition, certificatesOfCompetency: CertificatesOfCompetency, contactInformation: ContactInformation, familyData: FamilyData, nextOfKin: NextOfKin, passportVisa: PassportVisa, personalInformation: PersonalInformation, quickVersion: QuickVersion, seaServiceExperience: SeaServiceExperience, submitDate: String, submitID: String, type: String) {
         self.appliedPosition = appliedPosition
         self.certificatesOfCompetency = certificatesOfCompetency
         self.contactInformation = contactInformation
@@ -55,12 +70,13 @@ class JobApplication: Codable {
         self.submitID = submitID
         self.type = type
     }
+    // MARK: - Fleet Related Code
 }
 
-class AppliedPosition: Codable {
-    let appliedPositionAvailableFrom: String
-    let appliedPositionLowerRank: Bool
-    let appliedPositionRank: String
+public class AppliedPosition: Codable {
+    public var appliedPositionAvailableFrom: String?
+    public var appliedPositionLowerRank: Bool?
+    public var appliedPositionRank: String?
 
     enum CodingKeys: String, CodingKey {
         case appliedPositionAvailableFrom = "appliedPosition_availableFrom"
@@ -68,31 +84,43 @@ class AppliedPosition: Codable {
         case appliedPositionRank = "appliedPosition_rank"
     }
 
-    init(appliedPositionAvailableFrom: String, appliedPositionLowerRank: Bool, appliedPositionRank: String) {
+    public init() {
+        self.appliedPositionAvailableFrom = String()
+        self.appliedPositionLowerRank = Bool()
+        self.appliedPositionRank = String()
+    }
+
+    public init(appliedPositionAvailableFrom: String, appliedPositionLowerRank: Bool, appliedPositionRank: String) {
         self.appliedPositionAvailableFrom = appliedPositionAvailableFrom
         self.appliedPositionLowerRank = appliedPositionLowerRank
         self.appliedPositionRank = appliedPositionRank
     }
+    // MARK: - Fleet Related Code
 }
 
-class CertificatesOfCompetency: Codable {
-    let certificatesCompetencyCountry: String
+public class CertificatesOfCompetency: Codable {
+    public var certificatesCompetencyCountry: String?
 
     enum CodingKeys: String, CodingKey {
         case certificatesCompetencyCountry = "certificatesCompetency_Country"
     }
 
-    init(certificatesCompetencyCountry: String) {
+    public init() {
+        self.certificatesCompetencyCountry = String()
+    }
+
+    public init(certificatesCompetencyCountry: String) {
         self.certificatesCompetencyCountry = certificatesCompetencyCountry
     }
+    // MARK: - Fleet Related Code
 }
 
-class ContactInformation: Codable {
-    let contactInformationCityLocal, contactInformationCityPermanent, contactInformationCountryLocal, contactInformationCountryPermanent: String
-    let contactInformationEmail, contactInformationPhoneHomeLocal, contactInformationPhoneHomePermanent, contactInformationPhoneHomeQuickapply: String
-    let contactInformationPhoneMobileLocal, contactInformationPhoneMobilePermanent, contactInformationPhoneMobileQuickapply, contactInformationPostcodeLocal: String
-    let contactInformationPostcodePermanent, contactInformationStateLocal, contactInformationStatePermanent, contactInformationStreetFirstLocal: String
-    let contactInformationStreetFirstPermanent, contactInformationStreetSecondLocal, contactInformationStreetSecondPermanent: String
+public class ContactInformation: Codable {
+    public var contactInformationCityLocal, contactInformationCityPermanent, contactInformationCountryLocal, contactInformationCountryPermanent: String?
+    public var contactInformationEmail, contactInformationPhoneHomeLocal, contactInformationPhoneHomePermanent, contactInformationPhoneHomeQuickapply: String?
+    public var contactInformationPhoneMobileLocal, contactInformationPhoneMobilePermanent, contactInformationPhoneMobileQuickapply, contactInformationPostcodeLocal: String?
+    public var contactInformationPostcodePermanent, contactInformationStateLocal, contactInformationStatePermanent, contactInformationStreetFirstLocal: String?
+    public var contactInformationStreetFirstPermanent, contactInformationStreetSecondLocal, contactInformationStreetSecondPermanent: String?
 
     enum CodingKeys: String, CodingKey {
         case contactInformationCityLocal = "contactInformation_city_local"
@@ -116,7 +144,29 @@ class ContactInformation: Codable {
         case contactInformationStreetSecondPermanent = "contactInformation_street_second_permanent"
     }
 
-    init(contactInformationCityLocal: String, contactInformationCityPermanent: String, contactInformationCountryLocal: String, contactInformationCountryPermanent: String, contactInformationEmail: String, contactInformationPhoneHomeLocal: String, contactInformationPhoneHomePermanent: String, contactInformationPhoneHomeQuickapply: String, contactInformationPhoneMobileLocal: String, contactInformationPhoneMobilePermanent: String, contactInformationPhoneMobileQuickapply: String, contactInformationPostcodeLocal: String, contactInformationPostcodePermanent: String, contactInformationStateLocal: String, contactInformationStatePermanent: String, contactInformationStreetFirstLocal: String, contactInformationStreetFirstPermanent: String, contactInformationStreetSecondLocal: String, contactInformationStreetSecondPermanent: String) {
+    public init() {
+        self.contactInformationCityLocal = String()
+        self.contactInformationCityPermanent = String()
+        self.contactInformationCountryLocal = String()
+        self.contactInformationCountryPermanent = String()
+        self.contactInformationEmail = String()
+        self.contactInformationPhoneHomeLocal = String()
+        self.contactInformationPhoneHomePermanent = String()
+        self.contactInformationPhoneHomeQuickapply = String()
+        self.contactInformationPhoneMobileLocal = String()
+        self.contactInformationPhoneMobilePermanent = String()
+        self.contactInformationPhoneMobileQuickapply = String()
+        self.contactInformationPostcodeLocal = String()
+        self.contactInformationPostcodePermanent = String()
+        self.contactInformationStateLocal = String()
+        self.contactInformationStatePermanent = String()
+        self.contactInformationStreetFirstLocal = String()
+        self.contactInformationStreetFirstPermanent = String()
+        self.contactInformationStreetSecondLocal = String()
+        self.contactInformationStreetSecondPermanent = String()
+    }
+
+    public init(contactInformationCityLocal: String, contactInformationCityPermanent: String, contactInformationCountryLocal: String, contactInformationCountryPermanent: String, contactInformationEmail: String, contactInformationPhoneHomeLocal: String, contactInformationPhoneHomePermanent: String, contactInformationPhoneHomeQuickapply: String, contactInformationPhoneMobileLocal: String, contactInformationPhoneMobilePermanent: String, contactInformationPhoneMobileQuickapply: String, contactInformationPostcodeLocal: String, contactInformationPostcodePermanent: String, contactInformationStateLocal: String, contactInformationStatePermanent: String, contactInformationStreetFirstLocal: String, contactInformationStreetFirstPermanent: String, contactInformationStreetSecondLocal: String, contactInformationStreetSecondPermanent: String) {
         self.contactInformationCityLocal = contactInformationCityLocal
         self.contactInformationCityPermanent = contactInformationCityPermanent
         self.contactInformationCountryLocal = contactInformationCountryLocal
@@ -137,23 +187,29 @@ class ContactInformation: Codable {
         self.contactInformationStreetSecondLocal = contactInformationStreetSecondLocal
         self.contactInformationStreetSecondPermanent = contactInformationStreetSecondPermanent
     }
+    // MARK: - Fleet Related Code
 }
 
-class FamilyData: Codable {
-    let familyDataMembers: [FamilyDataMember]
+public class FamilyData: Codable {
+    public var familyDataMembers: [FamilyDataMember]?
 
     enum CodingKeys: String, CodingKey {
         case familyDataMembers = "familyData_members"
     }
 
-    init(familyDataMembers: [FamilyDataMember]) {
+    public init() {
+        self.familyDataMembers = [FamilyDataMember]()
+    }
+
+    public init(familyDataMembers: [FamilyDataMember]) {
         self.familyDataMembers = familyDataMembers
     }
+    // MARK: - Fleet Related Code
 }
 
-class FamilyDataMember: Codable {
-    let familyDataDateOfBirth, familyDataDateOfExpiry, familyDataFirstName, familyDataLastName: String
-    let familyDataPassportNumber, familyDataPlaceOfIssue: String
+public class FamilyDataMember: Codable {
+    public var familyDataDateOfBirth, familyDataDateOfExpiry, familyDataFirstName, familyDataLastName: String?
+    public var familyDataPassportNumber, familyDataPlaceOfIssue: String?
 
     enum CodingKeys: String, CodingKey {
         case familyDataDateOfBirth = "familyData_date_of_birth"
@@ -164,7 +220,16 @@ class FamilyDataMember: Codable {
         case familyDataPlaceOfIssue = "familyData_place_of_issue"
     }
 
-    init(familyDataDateOfBirth: String, familyDataDateOfExpiry: String, familyDataFirstName: String, familyDataLastName: String, familyDataPassportNumber: String, familyDataPlaceOfIssue: String) {
+    public init() {
+        self.familyDataDateOfBirth = String()
+        self.familyDataDateOfExpiry = String()
+        self.familyDataFirstName = String()
+        self.familyDataLastName = String()
+        self.familyDataPassportNumber = String()
+        self.familyDataPlaceOfIssue = String()
+    }
+
+    public init(familyDataDateOfBirth: String, familyDataDateOfExpiry: String, familyDataFirstName: String, familyDataLastName: String, familyDataPassportNumber: String, familyDataPlaceOfIssue: String) {
         self.familyDataDateOfBirth = familyDataDateOfBirth
         self.familyDataDateOfExpiry = familyDataDateOfExpiry
         self.familyDataFirstName = familyDataFirstName
@@ -172,13 +237,14 @@ class FamilyDataMember: Codable {
         self.familyDataPassportNumber = familyDataPassportNumber
         self.familyDataPlaceOfIssue = familyDataPlaceOfIssue
     }
+    // MARK: - Fleet Related Code
 }
 
-class NextOfKin: Codable {
-    let nextOfKinCity, nextOfKinCountry, nextOfKinDateOfBirth, nextOfKinName: String
-    let nextOfKinNameAlternate, nextOfKinPhoneHome, nextOfKinPhoneMobile, nextOfKinPostcode: String
-    let nextOfKinRelationship, nextOfKinRelationshipAlternate, nextOfKinState, nextOfKinStreetFirst: String
-    let nextOfKinStreetSecond: String
+public class NextOfKin: Codable {
+    public var nextOfKinCity, nextOfKinCountry, nextOfKinDateOfBirth, nextOfKinName: String?
+    public var nextOfKinNameAlternate, nextOfKinPhoneHome, nextOfKinPhoneMobile, nextOfKinPostcode: String?
+    public var nextOfKinRelationship, nextOfKinRelationshipAlternate, nextOfKinState, nextOfKinStreetFirst: String?
+    public var nextOfKinStreetSecond: String?
 
     enum CodingKeys: String, CodingKey {
         case nextOfKinCity = "nextOfKin_city"
@@ -196,7 +262,23 @@ class NextOfKin: Codable {
         case nextOfKinStreetSecond = "nextOfKin_street_second"
     }
 
-    init(nextOfKinCity: String, nextOfKinCountry: String, nextOfKinDateOfBirth: String, nextOfKinName: String, nextOfKinNameAlternate: String, nextOfKinPhoneHome: String, nextOfKinPhoneMobile: String, nextOfKinPostcode: String, nextOfKinRelationship: String, nextOfKinRelationshipAlternate: String, nextOfKinState: String, nextOfKinStreetFirst: String, nextOfKinStreetSecond: String) {
+    public init() {
+        self.nextOfKinCity = String()
+        self.nextOfKinCountry = String()
+        self.nextOfKinDateOfBirth = String()
+        self.nextOfKinName = String()
+        self.nextOfKinNameAlternate = String()
+        self.nextOfKinPhoneHome = String()
+        self.nextOfKinPhoneMobile = String()
+        self.nextOfKinPostcode = String()
+        self.nextOfKinRelationship = String()
+        self.nextOfKinRelationshipAlternate = String()
+        self.nextOfKinState = String()
+        self.nextOfKinStreetFirst = String()
+        self.nextOfKinStreetSecond = String()
+    }
+
+    public init(nextOfKinCity: String, nextOfKinCountry: String, nextOfKinDateOfBirth: String, nextOfKinName: String, nextOfKinNameAlternate: String, nextOfKinPhoneHome: String, nextOfKinPhoneMobile: String, nextOfKinPostcode: String, nextOfKinRelationship: String, nextOfKinRelationshipAlternate: String, nextOfKinState: String, nextOfKinStreetFirst: String, nextOfKinStreetSecond: String) {
         self.nextOfKinCity = nextOfKinCity
         self.nextOfKinCountry = nextOfKinCountry
         self.nextOfKinDateOfBirth = nextOfKinDateOfBirth
@@ -211,15 +293,16 @@ class NextOfKin: Codable {
         self.nextOfKinStreetFirst = nextOfKinStreetFirst
         self.nextOfKinStreetSecond = nextOfKinStreetSecond
     }
+    // MARK: - Fleet Related Code
 }
 
-class PassportVisa: Codable {
-    let passportAustralianMaritimeCrewVisa: Bool
-    let passportCountry, passportDateOfExpiry, passportDateOfIssue: String
-    let passportEcnr: Bool
-    let passportNumber, passportPlaceOfIssue: String
-    let passportUSVisaCD: Bool
-    let passportUSVisaCDDateOfExpiry: String
+public class PassportVisa: Codable {
+    public var passportAustralianMaritimeCrewVisa: Bool?
+    public var passportCountry, passportDateOfExpiry, passportDateOfIssue: String?
+    public var passportEcnr: Bool?
+    public var passportNumber, passportPlaceOfIssue: String?
+    public var passportUSVisaCD: Bool?
+    public var passportUSVisaCDDateOfExpiry: String?
 
     enum CodingKeys: String, CodingKey {
         case passportAustralianMaritimeCrewVisa = "passport_Australian_Maritime_Crew_Visa"
@@ -233,7 +316,19 @@ class PassportVisa: Codable {
         case passportUSVisaCDDateOfExpiry = "passport_US_Visa_CD_date_of_expiry"
     }
 
-    init(passportAustralianMaritimeCrewVisa: Bool, passportCountry: String, passportDateOfExpiry: String, passportDateOfIssue: String, passportEcnr: Bool, passportNumber: String, passportPlaceOfIssue: String, passportUSVisaCD: Bool, passportUSVisaCDDateOfExpiry: String) {
+    public init() {
+        self.passportAustralianMaritimeCrewVisa = Bool()
+        self.passportCountry = String()
+        self.passportDateOfExpiry = String()
+        self.passportDateOfIssue = String()
+        self.passportEcnr = Bool()
+        self.passportNumber = String()
+        self.passportPlaceOfIssue = String()
+        self.passportUSVisaCD = Bool()
+        self.passportUSVisaCDDateOfExpiry = String()
+    }
+
+    public init(passportAustralianMaritimeCrewVisa: Bool, passportCountry: String, passportDateOfExpiry: String, passportDateOfIssue: String, passportEcnr: Bool, passportNumber: String, passportPlaceOfIssue: String, passportUSVisaCD: Bool, passportUSVisaCDDateOfExpiry: String) {
         self.passportAustralianMaritimeCrewVisa = passportAustralianMaritimeCrewVisa
         self.passportCountry = passportCountry
         self.passportDateOfExpiry = passportDateOfExpiry
@@ -244,14 +339,15 @@ class PassportVisa: Codable {
         self.passportUSVisaCD = passportUSVisaCD
         self.passportUSVisaCDDateOfExpiry = passportUSVisaCDDateOfExpiry
     }
+    // MARK: - Fleet Related Code
 }
 
-class PersonalInformation: Codable {
-    let personalDetailsBloodGroup, personalDetailsBoilerSuitSize, personalDetailsDateOfBirth, personalDetailsFirstName: String
-    let personalDetailsHeight, personalDetailsLastName, personalDetailsMiddleName, personalDetailsNationality: String
-    let personalDetailsPlaceOfBirth, personalDetailsShoeSize: String
-    let personalDetailsSmoker, personalDetailsUnionMembership, personalDetailsVegetarian: Bool
-    let personalDetailsWeight, personalDetailsYellowFeverVaccinationBATCHLOTNumber, personalDetailsYellowFeverVaccinationDateOfExpiry, personalDetailsYellowFeverVaccinationDateOfIssue: String
+public class PersonalInformation: Codable {
+    public var personalDetailsBloodGroup, personalDetailsBoilerSuitSize, personalDetailsDateOfBirth, personalDetailsFirstName: String?
+    public var personalDetailsHeight, personalDetailsLastName, personalDetailsMiddleName, personalDetailsNationality: String?
+    public var personalDetailsPlaceOfBirth, personalDetailsShoeSize: String?
+    public var personalDetailsSmoker, personalDetailsUnionMembership, personalDetailsVegetarian: Bool?
+    public var personalDetailsWeight, personalDetailsYellowFeverVaccinationBATCHLOTNumber, personalDetailsYellowFeverVaccinationDateOfExpiry, personalDetailsYellowFeverVaccinationDateOfIssue: String?
 
     enum CodingKeys: String, CodingKey {
         case personalDetailsBloodGroup = "personalDetails_bloodGroup"
@@ -273,7 +369,27 @@ class PersonalInformation: Codable {
         case personalDetailsYellowFeverVaccinationDateOfIssue = "personalDetails_YellowFeverVaccination_DateOfIssue"
     }
 
-    init(personalDetailsBloodGroup: String, personalDetailsBoilerSuitSize: String, personalDetailsDateOfBirth: String, personalDetailsFirstName: String, personalDetailsHeight: String, personalDetailsLastName: String, personalDetailsMiddleName: String, personalDetailsNationality: String, personalDetailsPlaceOfBirth: String, personalDetailsShoeSize: String, personalDetailsSmoker: Bool, personalDetailsUnionMembership: Bool, personalDetailsVegetarian: Bool, personalDetailsWeight: String, personalDetailsYellowFeverVaccinationBATCHLOTNumber: String, personalDetailsYellowFeverVaccinationDateOfExpiry: String, personalDetailsYellowFeverVaccinationDateOfIssue: String) {
+    public init() {
+        self.personalDetailsBloodGroup = String()
+        self.personalDetailsBoilerSuitSize = String()
+        self.personalDetailsDateOfBirth = String()
+        self.personalDetailsFirstName = String()
+        self.personalDetailsHeight = String()
+        self.personalDetailsLastName = String()
+        self.personalDetailsMiddleName = String()
+        self.personalDetailsNationality = String()
+        self.personalDetailsPlaceOfBirth = String()
+        self.personalDetailsShoeSize = String()
+        self.personalDetailsSmoker = Bool()
+        self.personalDetailsUnionMembership = Bool()
+        self.personalDetailsVegetarian = Bool()
+        self.personalDetailsWeight = String()
+        self.personalDetailsYellowFeverVaccinationBATCHLOTNumber = String()
+        self.personalDetailsYellowFeverVaccinationDateOfExpiry = String()
+        self.personalDetailsYellowFeverVaccinationDateOfIssue = String()
+    }
+
+    public init(personalDetailsBloodGroup: String, personalDetailsBoilerSuitSize: String, personalDetailsDateOfBirth: String, personalDetailsFirstName: String, personalDetailsHeight: String, personalDetailsLastName: String, personalDetailsMiddleName: String, personalDetailsNationality: String, personalDetailsPlaceOfBirth: String, personalDetailsShoeSize: String, personalDetailsSmoker: Bool, personalDetailsUnionMembership: Bool, personalDetailsVegetarian: Bool, personalDetailsWeight: String, personalDetailsYellowFeverVaccinationBATCHLOTNumber: String, personalDetailsYellowFeverVaccinationDateOfExpiry: String, personalDetailsYellowFeverVaccinationDateOfIssue: String) {
         self.personalDetailsBloodGroup = personalDetailsBloodGroup
         self.personalDetailsBoilerSuitSize = personalDetailsBoilerSuitSize
         self.personalDetailsDateOfBirth = personalDetailsDateOfBirth
@@ -292,10 +408,11 @@ class PersonalInformation: Codable {
         self.personalDetailsYellowFeverVaccinationDateOfExpiry = personalDetailsYellowFeverVaccinationDateOfExpiry
         self.personalDetailsYellowFeverVaccinationDateOfIssue = personalDetailsYellowFeverVaccinationDateOfIssue
     }
+    // MARK: - Fleet Related Code
 }
 
-class QuickVersion: Codable {
-    let quickApplicationNearestOffice, quickApplicationRemarks, quickApplicationYearsOfExperience: String
+public class QuickVersion: Codable {
+    public var quickApplicationNearestOffice, quickApplicationRemarks, quickApplicationYearsOfExperience: String?
 
     enum CodingKeys: String, CodingKey {
         case quickApplicationNearestOffice = "quickApplication_nearestOffice"
@@ -303,15 +420,22 @@ class QuickVersion: Codable {
         case quickApplicationYearsOfExperience = "quickApplication_YearsOfExperience"
     }
 
-    init(quickApplicationNearestOffice: String, quickApplicationRemarks: String, quickApplicationYearsOfExperience: String) {
+    public init() {
+        self.quickApplicationNearestOffice = String()
+        self.quickApplicationRemarks = String()
+        self.quickApplicationYearsOfExperience = String()
+    }
+
+    public init(quickApplicationNearestOffice: String, quickApplicationRemarks: String, quickApplicationYearsOfExperience: String) {
         self.quickApplicationNearestOffice = quickApplicationNearestOffice
         self.quickApplicationRemarks = quickApplicationRemarks
         self.quickApplicationYearsOfExperience = quickApplicationYearsOfExperience
     }
+    // MARK: - Fleet Related Code
 }
 
-class SeaServiceExperience: Codable {
-    let seaServiceExperienceBrakeHorsepower, seaServiceExperienceEngineType, seaServiceExperienceVesselSize, seaServiceExperienceVesselType: String
+public class SeaServiceExperience: Codable {
+    public var seaServiceExperienceBrakeHorsepower, seaServiceExperienceEngineType, seaServiceExperienceVesselSize, seaServiceExperienceVesselType: String?
 
     enum CodingKeys: String, CodingKey {
         case seaServiceExperienceBrakeHorsepower = "seaServiceExperience_brakeHorsepower"
@@ -320,298 +444,308 @@ class SeaServiceExperience: Codable {
         case seaServiceExperienceVesselType = "seaServiceExperience_vesselType"
     }
 
-    init(seaServiceExperienceBrakeHorsepower: String, seaServiceExperienceEngineType: String, seaServiceExperienceVesselSize: String, seaServiceExperienceVesselType: String) {
+    public init() {
+        self.seaServiceExperienceBrakeHorsepower = String()
+        self.seaServiceExperienceEngineType = String()
+        self.seaServiceExperienceVesselSize = String()
+        self.seaServiceExperienceVesselType = String()
+    }
+
+    public init(seaServiceExperienceBrakeHorsepower: String, seaServiceExperienceEngineType: String, seaServiceExperienceVesselSize: String, seaServiceExperienceVesselType: String) {
         self.seaServiceExperienceBrakeHorsepower = seaServiceExperienceBrakeHorsepower
         self.seaServiceExperienceEngineType = seaServiceExperienceEngineType
         self.seaServiceExperienceVesselSize = seaServiceExperienceVesselSize
         self.seaServiceExperienceVesselType = seaServiceExperienceVesselType
     }
+    // MARK: - Fleet Related Code
 }
 
 // MARK: Convenience initializers
 
-extension JobApplication {
-    convenience init(data: Data) throws {
+public extension JobApplication {
+    public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(JobApplication.self, from: data)
         self.init(appliedPosition: me.appliedPosition, certificatesOfCompetency: me.certificatesOfCompetency, contactInformation: me.contactInformation, familyData: me.familyData, nextOfKin: me.nextOfKin, passportVisa: me.passportVisa, personalInformation: me.personalInformation, quickVersion: me.quickVersion, seaServiceExperience: me.seaServiceExperience, submitDate: me.submitDate, submitID: me.submitID, type: me.type)
     }
 
-    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    convenience init(fromURL url: URL) throws {
+    public convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    public func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
     }
 
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension AppliedPosition {
-    convenience init(data: Data) throws {
+public extension AppliedPosition {
+    public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(AppliedPosition.self, from: data)
         self.init(appliedPositionAvailableFrom: me.appliedPositionAvailableFrom, appliedPositionLowerRank: me.appliedPositionLowerRank, appliedPositionRank: me.appliedPositionRank)
     }
 
-    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    convenience init(fromURL url: URL) throws {
+    public convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    public func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
     }
 
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension CertificatesOfCompetency {
-    convenience init(data: Data) throws {
+public extension CertificatesOfCompetency {
+    public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(CertificatesOfCompetency.self, from: data)
         self.init(certificatesCompetencyCountry: me.certificatesCompetencyCountry)
     }
 
-    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    convenience init(fromURL url: URL) throws {
+    public convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    public func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
     }
 
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension ContactInformation {
-    convenience init(data: Data) throws {
+public extension ContactInformation {
+    public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(ContactInformation.self, from: data)
         self.init(contactInformationCityLocal: me.contactInformationCityLocal, contactInformationCityPermanent: me.contactInformationCityPermanent, contactInformationCountryLocal: me.contactInformationCountryLocal, contactInformationCountryPermanent: me.contactInformationCountryPermanent, contactInformationEmail: me.contactInformationEmail, contactInformationPhoneHomeLocal: me.contactInformationPhoneHomeLocal, contactInformationPhoneHomePermanent: me.contactInformationPhoneHomePermanent, contactInformationPhoneHomeQuickapply: me.contactInformationPhoneHomeQuickapply, contactInformationPhoneMobileLocal: me.contactInformationPhoneMobileLocal, contactInformationPhoneMobilePermanent: me.contactInformationPhoneMobilePermanent, contactInformationPhoneMobileQuickapply: me.contactInformationPhoneMobileQuickapply, contactInformationPostcodeLocal: me.contactInformationPostcodeLocal, contactInformationPostcodePermanent: me.contactInformationPostcodePermanent, contactInformationStateLocal: me.contactInformationStateLocal, contactInformationStatePermanent: me.contactInformationStatePermanent, contactInformationStreetFirstLocal: me.contactInformationStreetFirstLocal, contactInformationStreetFirstPermanent: me.contactInformationStreetFirstPermanent, contactInformationStreetSecondLocal: me.contactInformationStreetSecondLocal, contactInformationStreetSecondPermanent: me.contactInformationStreetSecondPermanent)
     }
 
-    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    convenience init(fromURL url: URL) throws {
+    public convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    public func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
     }
 
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension FamilyData {
-    convenience init(data: Data) throws {
+public extension FamilyData {
+    public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(FamilyData.self, from: data)
         self.init(familyDataMembers: me.familyDataMembers)
     }
 
-    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    convenience init(fromURL url: URL) throws {
+    public convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    public func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
     }
 
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension FamilyDataMember {
-    convenience init(data: Data) throws {
+public extension FamilyDataMember {
+    public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(FamilyDataMember.self, from: data)
         self.init(familyDataDateOfBirth: me.familyDataDateOfBirth, familyDataDateOfExpiry: me.familyDataDateOfExpiry, familyDataFirstName: me.familyDataFirstName, familyDataLastName: me.familyDataLastName, familyDataPassportNumber: me.familyDataPassportNumber, familyDataPlaceOfIssue: me.familyDataPlaceOfIssue)
     }
 
-    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    convenience init(fromURL url: URL) throws {
+    public convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    public func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
     }
 
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension NextOfKin {
-    convenience init(data: Data) throws {
+public extension NextOfKin {
+    public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(NextOfKin.self, from: data)
         self.init(nextOfKinCity: me.nextOfKinCity, nextOfKinCountry: me.nextOfKinCountry, nextOfKinDateOfBirth: me.nextOfKinDateOfBirth, nextOfKinName: me.nextOfKinName, nextOfKinNameAlternate: me.nextOfKinNameAlternate, nextOfKinPhoneHome: me.nextOfKinPhoneHome, nextOfKinPhoneMobile: me.nextOfKinPhoneMobile, nextOfKinPostcode: me.nextOfKinPostcode, nextOfKinRelationship: me.nextOfKinRelationship, nextOfKinRelationshipAlternate: me.nextOfKinRelationshipAlternate, nextOfKinState: me.nextOfKinState, nextOfKinStreetFirst: me.nextOfKinStreetFirst, nextOfKinStreetSecond: me.nextOfKinStreetSecond)
     }
 
-    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    convenience init(fromURL url: URL) throws {
+    public convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    public func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
     }
 
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension PassportVisa {
-    convenience init(data: Data) throws {
+public extension PassportVisa {
+    public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(PassportVisa.self, from: data)
         self.init(passportAustralianMaritimeCrewVisa: me.passportAustralianMaritimeCrewVisa, passportCountry: me.passportCountry, passportDateOfExpiry: me.passportDateOfExpiry, passportDateOfIssue: me.passportDateOfIssue, passportEcnr: me.passportEcnr, passportNumber: me.passportNumber, passportPlaceOfIssue: me.passportPlaceOfIssue, passportUSVisaCD: me.passportUSVisaCD, passportUSVisaCDDateOfExpiry: me.passportUSVisaCDDateOfExpiry)
     }
 
-    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    convenience init(fromURL url: URL) throws {
+    public convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    public func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
     }
 
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension PersonalInformation {
-    convenience init(data: Data) throws {
+public extension PersonalInformation {
+    public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(PersonalInformation.self, from: data)
         self.init(personalDetailsBloodGroup: me.personalDetailsBloodGroup, personalDetailsBoilerSuitSize: me.personalDetailsBoilerSuitSize, personalDetailsDateOfBirth: me.personalDetailsDateOfBirth, personalDetailsFirstName: me.personalDetailsFirstName, personalDetailsHeight: me.personalDetailsHeight, personalDetailsLastName: me.personalDetailsLastName, personalDetailsMiddleName: me.personalDetailsMiddleName, personalDetailsNationality: me.personalDetailsNationality, personalDetailsPlaceOfBirth: me.personalDetailsPlaceOfBirth, personalDetailsShoeSize: me.personalDetailsShoeSize, personalDetailsSmoker: me.personalDetailsSmoker, personalDetailsUnionMembership: me.personalDetailsUnionMembership, personalDetailsVegetarian: me.personalDetailsVegetarian, personalDetailsWeight: me.personalDetailsWeight, personalDetailsYellowFeverVaccinationBATCHLOTNumber: me.personalDetailsYellowFeverVaccinationBATCHLOTNumber, personalDetailsYellowFeverVaccinationDateOfExpiry: me.personalDetailsYellowFeverVaccinationDateOfExpiry, personalDetailsYellowFeverVaccinationDateOfIssue: me.personalDetailsYellowFeverVaccinationDateOfIssue)
     }
 
-    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    convenience init(fromURL url: URL) throws {
+    public convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    public func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
     }
 
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension QuickVersion {
-    convenience init(data: Data) throws {
+public extension QuickVersion {
+    public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(QuickVersion.self, from: data)
         self.init(quickApplicationNearestOffice: me.quickApplicationNearestOffice, quickApplicationRemarks: me.quickApplicationRemarks, quickApplicationYearsOfExperience: me.quickApplicationYearsOfExperience)
     }
 
-    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    convenience init(fromURL url: URL) throws {
+    public convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    public func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
     }
 
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension SeaServiceExperience {
-    convenience init(data: Data) throws {
+public extension SeaServiceExperience {
+    public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(SeaServiceExperience.self, from: data)
         self.init(seaServiceExperienceBrakeHorsepower: me.seaServiceExperienceBrakeHorsepower, seaServiceExperienceEngineType: me.seaServiceExperienceEngineType, seaServiceExperienceVesselSize: me.seaServiceExperienceVesselSize, seaServiceExperienceVesselType: me.seaServiceExperienceVesselType)
     }
 
-    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
             throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
 
-    convenience init(fromURL url: URL) throws {
+    public convenience init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    public func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
     }
 
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
+
+// MARK: - Fleet Management code
