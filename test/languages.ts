@@ -408,6 +408,62 @@ export const SwiftLanguage: Language = {
   sourceFiles: ["src/language/Swift.ts"]
 };
 
+export const FleetSwiftLanguage: Language = {
+  name: "fleet_swift",
+  base: "test/fixtures/swift",
+  compileCommand: `swiftc -o quicktype main.swift quicktype.swift`,
+  runCommand(sample: string) {
+    return `./quicktype "${sample}"`;
+  },
+  diffViaSchema: true,
+  skipDiffViaSchema: [
+    "bug427.json",
+    "github-events.json",
+    "keywords.json",
+    "0a91a.json",
+    "337ed.json",
+    "34702.json",
+    "7f568.json",
+    "734ad.json",
+    "76ae1.json",
+    "c8c7e.json",
+    "e53b5.json",
+    "e8b04.json",
+    "fcca3.json",
+    "f82d9.json"
+  ],
+  allowMissingNull: true,
+  output: "fleetquicktype.swift",
+  topLevel: "TopLevel",
+  skipJSON: [
+    // Swift only supports top-level arrays and objects
+    "no-classes.json",
+    // This at least is keeping blns-object from working: https://bugs.swift.org/browse/SR-6314
+    "blns-object.json",
+    // Doesn't seem to work on Linux, works on MacOS
+    "nst-test-suite.json"
+  ],
+  skipMiscJSON: false,
+  skipSchema: [
+    // The top-level is anything, which Swift's JSON types don't support
+    "any.schema",
+    // The top-level is a union, which Swift's JSON types don't support
+    "implicit-class-array-union.schema",
+    // The code we generate for top-level enums is incompatible with the driver
+    "top-level-enum.schema"
+  ],
+  rendererOptions: {},
+  quickTestRendererOptions: [
+    { "struct-or-class": "class" },
+    { density: "dense" },
+    { density: "normal" },
+    { "url-session": "true" },
+    { "access-level": "internal" },
+    { "access-level": "public" }
+  ],
+  sourceFiles: ["src/language/FleetSwift.ts"]
+};
+
 export const ObjectiveCLanguage: Language = {
   name: "objective-c",
   base: "test/fixtures/objective-c",

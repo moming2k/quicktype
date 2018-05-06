@@ -600,6 +600,7 @@ export const allFixtures: Fixture[] = [
   new JSONSchemaFixture(languages.RubyLanguage),
   new JSONSchemaFixture(languages.ElmLanguage),
   new JSONSchemaFixture(languages.SwiftLanguage),
+  new JSONSchemaFixture(languages.FleetSwiftLanguage),
   new JSONSchemaFixture(languages.TypeScriptLanguage),
   new JSONSchemaFixture(languages.FlowLanguage),
   new JSONSchemaFixture(languages.JavaScriptLanguage),
