@@ -89,7 +89,6 @@ extension Decodable {
 }
 
 
-/// Generated from source.json with shasum c696a95adeb0e1d82bb25144518a4f33fe538004
 public class JobApplication: Codable {
     public var appliedPosition: AppliedPosition?
     public var certificatesOfCompetency: CertificatesOfCompetency?
@@ -152,435 +151,443 @@ public class JobApplication: Codable {
 }
 
 public class AppliedPosition: Codable {
-    public var appliedPositionAvailableFrom: String?
-    public var appliedPositionLowerRank: Bool?
-    public var appliedPositionRank: String?
+    public var availableFrom: String?
+    public var lowerRank: Bool?
+    public var rank: String?
 
     enum CodingKeys: String, CodingKey {
-        case appliedPositionAvailableFrom = "appliedPosition_availableFrom"
-        case appliedPositionLowerRank = "appliedPosition_lowerRank"
-        case appliedPositionRank = "appliedPosition_rank"
+        case availableFrom = "availableFrom"
+        case lowerRank = "lowerRank"
+        case rank = "rank"
     }
 
     public init() {
-        self.appliedPositionAvailableFrom = String()
-        self.appliedPositionLowerRank = Bool()
-        self.appliedPositionRank = String()
+        self.availableFrom = String()
+        self.lowerRank = Bool()
+        self.rank = String()
     }
 
-    public init(appliedPositionAvailableFrom: String, appliedPositionLowerRank: Bool, appliedPositionRank: String) {
-        self.appliedPositionAvailableFrom = appliedPositionAvailableFrom
-        self.appliedPositionLowerRank = appliedPositionLowerRank
-        self.appliedPositionRank = appliedPositionRank
+    public init(availableFrom: String, lowerRank: Bool, rank: String) {
+        self.availableFrom = availableFrom
+        self.lowerRank = lowerRank
+        self.rank = rank
     }
     // MARK: - Fleet Related Code
 }
 
 public class CertificatesOfCompetency: Codable {
-    public var certificatesCompetencyCountry: String?
+    public var country: String?
 
     enum CodingKeys: String, CodingKey {
-        case certificatesCompetencyCountry = "certificatesCompetency_Country"
+        case country = "Country"
     }
 
     public init() {
-        self.certificatesCompetencyCountry = String()
+        self.country = String()
     }
 
-    public init(certificatesCompetencyCountry: String) {
-        self.certificatesCompetencyCountry = certificatesCompetencyCountry
+    public init(country: String) {
+        self.country = country
     }
     // MARK: - Fleet Related Code
 }
 
 public class ContactInformation: Codable {
-    public var contactInformationCityLocal: String?
-    public var contactInformationCityPermanent: String?
-    public var contactInformationCountryLocal: String?
-    public var contactInformationCountryPermanent: String?
-    public var contactInformationEmail: String?
-    public var contactInformationPhoneHomeLocal: String?
-    public var contactInformationPhoneHomePermanent: String?
-    public var contactInformationPhoneHomeQuickapply: String?
-    public var contactInformationPhoneMobileLocal: String?
-    public var contactInformationPhoneMobilePermanent: String?
-    public var contactInformationPhoneMobileQuickapply: String?
-    public var contactInformationPostcodeLocal: String?
-    public var contactInformationPostcodePermanent: String?
-    public var contactInformationStateLocal: String?
-    public var contactInformationStatePermanent: String?
-    public var contactInformationStreetFirstLocal: String?
-    public var contactInformationStreetFirstPermanent: String?
-    public var contactInformationStreetSecondLocal: String?
-    public var contactInformationStreetSecondPermanent: String?
+    public var cityLocal: String?
+    public var cityPermanent: String?
+    public var countryLocal: String?
+    public var countryPermanent: String?
+    public var email: String?
+    public var phoneHomeLocal: String?
+    public var phoneHomePermanent: String?
+    public var phoneHomeQuickapply: String?
+    public var phoneMobileLocal: String?
+    public var phoneMobilePermanent: String?
+    public var phoneMobileQuickapply: String?
+    public var postcodeLocal: String?
+    public var postcodePermanent: String?
+    public var stateLocal: String?
+    public var statePermanent: String?
+    public var streetFirstLocal: String?
+    public var streetFirstPermanent: String?
+    public var streetSecondLocal: String?
+    public var streetSecondPermanent: String?
+    public var valid: Bool?
 
     enum CodingKeys: String, CodingKey {
-        case contactInformationCityLocal = "contactInformation_city_local"
-        case contactInformationCityPermanent = "contactInformation_city_permanent"
-        case contactInformationCountryLocal = "contactInformation_country_local"
-        case contactInformationCountryPermanent = "contactInformation_country_permanent"
-        case contactInformationEmail = "contactInformation_email"
-        case contactInformationPhoneHomeLocal = "contactInformation_phoneHome_local"
-        case contactInformationPhoneHomePermanent = "contactInformation_phoneHome_permanent"
-        case contactInformationPhoneHomeQuickapply = "contactInformation_phoneHome_quickapply"
-        case contactInformationPhoneMobileLocal = "contactInformation_phoneMobile_local"
-        case contactInformationPhoneMobilePermanent = "contactInformation_phoneMobile_permanent"
-        case contactInformationPhoneMobileQuickapply = "contactInformation_phoneMobile_quickapply"
-        case contactInformationPostcodeLocal = "contactInformation_postcode_local"
-        case contactInformationPostcodePermanent = "contactInformation_postcode_permanent"
-        case contactInformationStateLocal = "contactInformation_state_local"
-        case contactInformationStatePermanent = "contactInformation_state_permanent"
-        case contactInformationStreetFirstLocal = "contactInformation_street_first_local"
-        case contactInformationStreetFirstPermanent = "contactInformation_street_first_permanent"
-        case contactInformationStreetSecondLocal = "contactInformation_street_second_local"
-        case contactInformationStreetSecondPermanent = "contactInformation_street_second_permanent"
+        case cityLocal = "city_local"
+        case cityPermanent = "city_permanent"
+        case countryLocal = "country_local"
+        case countryPermanent = "country_permanent"
+        case email = "email"
+        case phoneHomeLocal = "phoneHome_local"
+        case phoneHomePermanent = "phoneHome_permanent"
+        case phoneHomeQuickapply = "phoneHome_quickapply"
+        case phoneMobileLocal = "phoneMobile_local"
+        case phoneMobilePermanent = "phoneMobile_permanent"
+        case phoneMobileQuickapply = "phoneMobile_quickapply"
+        case postcodeLocal = "postcode_local"
+        case postcodePermanent = "postcode_permanent"
+        case stateLocal = "state_local"
+        case statePermanent = "state_permanent"
+        case streetFirstLocal = "street_first_local"
+        case streetFirstPermanent = "street_first_permanent"
+        case streetSecondLocal = "street_second_local"
+        case streetSecondPermanent = "street_second_permanent"
+        case valid = "valid"
     }
 
     public init() {
-        self.contactInformationCityLocal = String()
-        self.contactInformationCityPermanent = String()
-        self.contactInformationCountryLocal = String()
-        self.contactInformationCountryPermanent = String()
-        self.contactInformationEmail = String()
-        self.contactInformationPhoneHomeLocal = String()
-        self.contactInformationPhoneHomePermanent = String()
-        self.contactInformationPhoneHomeQuickapply = String()
-        self.contactInformationPhoneMobileLocal = String()
-        self.contactInformationPhoneMobilePermanent = String()
-        self.contactInformationPhoneMobileQuickapply = String()
-        self.contactInformationPostcodeLocal = String()
-        self.contactInformationPostcodePermanent = String()
-        self.contactInformationStateLocal = String()
-        self.contactInformationStatePermanent = String()
-        self.contactInformationStreetFirstLocal = String()
-        self.contactInformationStreetFirstPermanent = String()
-        self.contactInformationStreetSecondLocal = String()
-        self.contactInformationStreetSecondPermanent = String()
+        self.cityLocal = String()
+        self.cityPermanent = String()
+        self.countryLocal = String()
+        self.countryPermanent = String()
+        self.email = String()
+        self.phoneHomeLocal = String()
+        self.phoneHomePermanent = String()
+        self.phoneHomeQuickapply = String()
+        self.phoneMobileLocal = String()
+        self.phoneMobilePermanent = String()
+        self.phoneMobileQuickapply = String()
+        self.postcodeLocal = String()
+        self.postcodePermanent = String()
+        self.stateLocal = String()
+        self.statePermanent = String()
+        self.streetFirstLocal = String()
+        self.streetFirstPermanent = String()
+        self.streetSecondLocal = String()
+        self.streetSecondPermanent = String()
+        self.valid = Bool()
     }
 
-    public init(contactInformationCityLocal: String, contactInformationCityPermanent: String, contactInformationCountryLocal: String, contactInformationCountryPermanent: String, contactInformationEmail: String, contactInformationPhoneHomeLocal: String, contactInformationPhoneHomePermanent: String, contactInformationPhoneHomeQuickapply: String, contactInformationPhoneMobileLocal: String, contactInformationPhoneMobilePermanent: String, contactInformationPhoneMobileQuickapply: String, contactInformationPostcodeLocal: String, contactInformationPostcodePermanent: String, contactInformationStateLocal: String, contactInformationStatePermanent: String, contactInformationStreetFirstLocal: String, contactInformationStreetFirstPermanent: String, contactInformationStreetSecondLocal: String, contactInformationStreetSecondPermanent: String) {
-        self.contactInformationCityLocal = contactInformationCityLocal
-        self.contactInformationCityPermanent = contactInformationCityPermanent
-        self.contactInformationCountryLocal = contactInformationCountryLocal
-        self.contactInformationCountryPermanent = contactInformationCountryPermanent
-        self.contactInformationEmail = contactInformationEmail
-        self.contactInformationPhoneHomeLocal = contactInformationPhoneHomeLocal
-        self.contactInformationPhoneHomePermanent = contactInformationPhoneHomePermanent
-        self.contactInformationPhoneHomeQuickapply = contactInformationPhoneHomeQuickapply
-        self.contactInformationPhoneMobileLocal = contactInformationPhoneMobileLocal
-        self.contactInformationPhoneMobilePermanent = contactInformationPhoneMobilePermanent
-        self.contactInformationPhoneMobileQuickapply = contactInformationPhoneMobileQuickapply
-        self.contactInformationPostcodeLocal = contactInformationPostcodeLocal
-        self.contactInformationPostcodePermanent = contactInformationPostcodePermanent
-        self.contactInformationStateLocal = contactInformationStateLocal
-        self.contactInformationStatePermanent = contactInformationStatePermanent
-        self.contactInformationStreetFirstLocal = contactInformationStreetFirstLocal
-        self.contactInformationStreetFirstPermanent = contactInformationStreetFirstPermanent
-        self.contactInformationStreetSecondLocal = contactInformationStreetSecondLocal
-        self.contactInformationStreetSecondPermanent = contactInformationStreetSecondPermanent
+    public init(cityLocal: String, cityPermanent: String, countryLocal: String, countryPermanent: String, email: String, phoneHomeLocal: String, phoneHomePermanent: String, phoneHomeQuickapply: String, phoneMobileLocal: String, phoneMobilePermanent: String, phoneMobileQuickapply: String, postcodeLocal: String, postcodePermanent: String, stateLocal: String, statePermanent: String, streetFirstLocal: String, streetFirstPermanent: String, streetSecondLocal: String, streetSecondPermanent: String, valid: Bool) {
+        self.cityLocal = cityLocal
+        self.cityPermanent = cityPermanent
+        self.countryLocal = countryLocal
+        self.countryPermanent = countryPermanent
+        self.email = email
+        self.phoneHomeLocal = phoneHomeLocal
+        self.phoneHomePermanent = phoneHomePermanent
+        self.phoneHomeQuickapply = phoneHomeQuickapply
+        self.phoneMobileLocal = phoneMobileLocal
+        self.phoneMobilePermanent = phoneMobilePermanent
+        self.phoneMobileQuickapply = phoneMobileQuickapply
+        self.postcodeLocal = postcodeLocal
+        self.postcodePermanent = postcodePermanent
+        self.stateLocal = stateLocal
+        self.statePermanent = statePermanent
+        self.streetFirstLocal = streetFirstLocal
+        self.streetFirstPermanent = streetFirstPermanent
+        self.streetSecondLocal = streetSecondLocal
+        self.streetSecondPermanent = streetSecondPermanent
+        self.valid = valid
     }
     // MARK: - Fleet Related Code
 }
 
 public class FamilyData: Codable {
-    public var familyDataMembers: [FamilyDataMember]?
+    public var members: [Member]?
 
     enum CodingKeys: String, CodingKey {
-        case familyDataMembers = "familyData_members"
+        case members = "members"
     }
 
     public init() {
-        self.familyDataMembers = [FamilyDataMember]()
+        self.members = [Member]()
     }
 
-    public init(familyDataMembers: [FamilyDataMember]) {
-        self.familyDataMembers = familyDataMembers
+    public init(members: [Member]) {
+        self.members = members
     }
     // MARK: - Fleet Related Code
 }
 
-public class FamilyDataMember: Codable {
-    public var familyDataDateOfBirth: String?
-    public var familyDataDateOfExpiry: String?
-    public var familyDataFirstName: String?
-    public var familyDataLastName: String?
-    public var familyDataPassportNumber: String?
-    public var familyDataPlaceOfIssue: String?
+public class Member: Codable {
+    public var dateOfBirth: String?
+    public var dateOfExpiry: String?
+    public var firstName: String?
+    public var lastName: String?
+    public var number: String?
+    public var placeOfIssue: String?
 
     enum CodingKeys: String, CodingKey {
-        case familyDataDateOfBirth = "familyData_date_of_birth"
-        case familyDataDateOfExpiry = "familyData_date_of_expiry"
-        case familyDataFirstName = "familyData_first_name"
-        case familyDataLastName = "familyData_last_name"
-        case familyDataPassportNumber = "familyData_passport_number"
-        case familyDataPlaceOfIssue = "familyData_place_of_issue"
+        case dateOfBirth = "date_of_birth"
+        case dateOfExpiry = "date_of_expiry"
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case number = "number"
+        case placeOfIssue = "place_of_issue"
     }
 
     public init() {
-        self.familyDataDateOfBirth = String()
-        self.familyDataDateOfExpiry = String()
-        self.familyDataFirstName = String()
-        self.familyDataLastName = String()
-        self.familyDataPassportNumber = String()
-        self.familyDataPlaceOfIssue = String()
+        self.dateOfBirth = String()
+        self.dateOfExpiry = String()
+        self.firstName = String()
+        self.lastName = String()
+        self.number = String()
+        self.placeOfIssue = String()
     }
 
-    public init(familyDataDateOfBirth: String, familyDataDateOfExpiry: String, familyDataFirstName: String, familyDataLastName: String, familyDataPassportNumber: String, familyDataPlaceOfIssue: String) {
-        self.familyDataDateOfBirth = familyDataDateOfBirth
-        self.familyDataDateOfExpiry = familyDataDateOfExpiry
-        self.familyDataFirstName = familyDataFirstName
-        self.familyDataLastName = familyDataLastName
-        self.familyDataPassportNumber = familyDataPassportNumber
-        self.familyDataPlaceOfIssue = familyDataPlaceOfIssue
+    public init(dateOfBirth: String, dateOfExpiry: String, firstName: String, lastName: String, number: String, placeOfIssue: String) {
+        self.dateOfBirth = dateOfBirth
+        self.dateOfExpiry = dateOfExpiry
+        self.firstName = firstName
+        self.lastName = lastName
+        self.number = number
+        self.placeOfIssue = placeOfIssue
     }
     // MARK: - Fleet Related Code
 }
 
 public class NextOfKin: Codable {
-    public var nextOfKinCity: String?
-    public var nextOfKinCountry: String?
-    public var nextOfKinDateOfBirth: String?
-    public var nextOfKinName: String?
-    public var nextOfKinNameAlternate: String?
-    public var nextOfKinPhoneHome: String?
-    public var nextOfKinPhoneMobile: String?
-    public var nextOfKinPostcode: String?
-    public var nextOfKinRelationship: String?
-    public var nextOfKinRelationshipAlternate: String?
-    public var nextOfKinState: String?
-    public var nextOfKinStreetFirst: String?
-    public var nextOfKinStreetSecond: String?
+    public var city: String?
+    public var country: String?
+    public var dateOfBirth: String?
+    public var name: String?
+    public var nameAlternate: String?
+    public var phoneHome: String?
+    public var phoneMobile: String?
+    public var postcode: String?
+    public var relationship: String?
+    public var relationshipAlternate: String?
+    public var state: String?
+    public var streetFirst: String?
+    public var streetSecond: String?
+    public var valid: Bool?
 
     enum CodingKeys: String, CodingKey {
-        case nextOfKinCity = "nextOfKin_city"
-        case nextOfKinCountry = "nextOfKin_country"
-        case nextOfKinDateOfBirth = "nextOfKin_dateOfBirth"
-        case nextOfKinName = "nextOfKin_name"
-        case nextOfKinNameAlternate = "nextOfKin_name_alternate"
-        case nextOfKinPhoneHome = "nextOfKin_phoneHome"
-        case nextOfKinPhoneMobile = "nextOfKin_phoneMobile"
-        case nextOfKinPostcode = "nextOfKin_postcode"
-        case nextOfKinRelationship = "nextOfKin_relationship"
-        case nextOfKinRelationshipAlternate = "nextOfKin_relationship_alternate"
-        case nextOfKinState = "nextOfKin_state"
-        case nextOfKinStreetFirst = "nextOfKin_street_first"
-        case nextOfKinStreetSecond = "nextOfKin_street_second"
+        case city = "city"
+        case country = "country"
+        case dateOfBirth = "dateOfBirth"
+        case name = "name"
+        case nameAlternate = "name_alternate"
+        case phoneHome = "phoneHome"
+        case phoneMobile = "phoneMobile"
+        case postcode = "postcode"
+        case relationship = "relationship"
+        case relationshipAlternate = "relationship_alternate"
+        case state = "state"
+        case streetFirst = "street_first"
+        case streetSecond = "street_second"
+        case valid = "valid"
     }
 
     public init() {
-        self.nextOfKinCity = String()
-        self.nextOfKinCountry = String()
-        self.nextOfKinDateOfBirth = String()
-        self.nextOfKinName = String()
-        self.nextOfKinNameAlternate = String()
-        self.nextOfKinPhoneHome = String()
-        self.nextOfKinPhoneMobile = String()
-        self.nextOfKinPostcode = String()
-        self.nextOfKinRelationship = String()
-        self.nextOfKinRelationshipAlternate = String()
-        self.nextOfKinState = String()
-        self.nextOfKinStreetFirst = String()
-        self.nextOfKinStreetSecond = String()
+        self.city = String()
+        self.country = String()
+        self.dateOfBirth = String()
+        self.name = String()
+        self.nameAlternate = String()
+        self.phoneHome = String()
+        self.phoneMobile = String()
+        self.postcode = String()
+        self.relationship = String()
+        self.relationshipAlternate = String()
+        self.state = String()
+        self.streetFirst = String()
+        self.streetSecond = String()
+        self.valid = Bool()
     }
 
-    public init(nextOfKinCity: String, nextOfKinCountry: String, nextOfKinDateOfBirth: String, nextOfKinName: String, nextOfKinNameAlternate: String, nextOfKinPhoneHome: String, nextOfKinPhoneMobile: String, nextOfKinPostcode: String, nextOfKinRelationship: String, nextOfKinRelationshipAlternate: String, nextOfKinState: String, nextOfKinStreetFirst: String, nextOfKinStreetSecond: String) {
-        self.nextOfKinCity = nextOfKinCity
-        self.nextOfKinCountry = nextOfKinCountry
-        self.nextOfKinDateOfBirth = nextOfKinDateOfBirth
-        self.nextOfKinName = nextOfKinName
-        self.nextOfKinNameAlternate = nextOfKinNameAlternate
-        self.nextOfKinPhoneHome = nextOfKinPhoneHome
-        self.nextOfKinPhoneMobile = nextOfKinPhoneMobile
-        self.nextOfKinPostcode = nextOfKinPostcode
-        self.nextOfKinRelationship = nextOfKinRelationship
-        self.nextOfKinRelationshipAlternate = nextOfKinRelationshipAlternate
-        self.nextOfKinState = nextOfKinState
-        self.nextOfKinStreetFirst = nextOfKinStreetFirst
-        self.nextOfKinStreetSecond = nextOfKinStreetSecond
+    public init(city: String, country: String, dateOfBirth: String, name: String, nameAlternate: String, phoneHome: String, phoneMobile: String, postcode: String, relationship: String, relationshipAlternate: String, state: String, streetFirst: String, streetSecond: String, valid: Bool) {
+        self.city = city
+        self.country = country
+        self.dateOfBirth = dateOfBirth
+        self.name = name
+        self.nameAlternate = nameAlternate
+        self.phoneHome = phoneHome
+        self.phoneMobile = phoneMobile
+        self.postcode = postcode
+        self.relationship = relationship
+        self.relationshipAlternate = relationshipAlternate
+        self.state = state
+        self.streetFirst = streetFirst
+        self.streetSecond = streetSecond
+        self.valid = valid
     }
     // MARK: - Fleet Related Code
 }
 
 public class PassportVisa: Codable {
-    public var passportAustralianMaritimeCrewVisa: Bool?
-    public var passportCountry: String?
-    public var passportDateOfExpiry: String?
-    public var passportDateOfIssue: String?
-    public var passportEcnr: Bool?
-    public var passportNumber: String?
-    public var passportPlaceOfIssue: String?
-    public var passportUSVisaCD: Bool?
-    public var passportUSVisaCDDateOfExpiry: String?
+    public var australianMaritimeCrewVisa: Bool?
+    public var country: String?
+    public var dateOfExpiry: String?
+    public var dateOfIssue: String?
+    public var ecnr: Bool?
+    public var number: String?
+    public var placeOfIssue: String?
+    public var usVisaCD: Bool?
+    public var usVisaCDDateOfExpiry: String?
 
     enum CodingKeys: String, CodingKey {
-        case passportAustralianMaritimeCrewVisa = "passport_Australian_Maritime_Crew_Visa"
-        case passportCountry = "passport_country"
-        case passportDateOfExpiry = "passport_date_of_expiry"
-        case passportDateOfIssue = "passport_date_of_issue"
-        case passportEcnr = "passport_ecnr"
-        case passportNumber = "passport_number"
-        case passportPlaceOfIssue = "passport_place_of_issue"
-        case passportUSVisaCD = "passport_US_Visa_CD"
-        case passportUSVisaCDDateOfExpiry = "passport_US_Visa_CD_date_of_expiry"
+        case australianMaritimeCrewVisa = "Australian_Maritime_Crew_Visa"
+        case country = "country"
+        case dateOfExpiry = "date_of_expiry"
+        case dateOfIssue = "date_of_issue"
+        case ecnr = "ecnr"
+        case number = "number"
+        case placeOfIssue = "place_of_issue"
+        case usVisaCD = "US_Visa_CD"
+        case usVisaCDDateOfExpiry = "US_Visa_CD_date_of_expiry"
     }
 
     public init() {
-        self.passportAustralianMaritimeCrewVisa = Bool()
-        self.passportCountry = String()
-        self.passportDateOfExpiry = String()
-        self.passportDateOfIssue = String()
-        self.passportEcnr = Bool()
-        self.passportNumber = String()
-        self.passportPlaceOfIssue = String()
-        self.passportUSVisaCD = Bool()
-        self.passportUSVisaCDDateOfExpiry = String()
+        self.australianMaritimeCrewVisa = Bool()
+        self.country = String()
+        self.dateOfExpiry = String()
+        self.dateOfIssue = String()
+        self.ecnr = Bool()
+        self.number = String()
+        self.placeOfIssue = String()
+        self.usVisaCD = Bool()
+        self.usVisaCDDateOfExpiry = String()
     }
 
-    public init(passportAustralianMaritimeCrewVisa: Bool, passportCountry: String, passportDateOfExpiry: String, passportDateOfIssue: String, passportEcnr: Bool, passportNumber: String, passportPlaceOfIssue: String, passportUSVisaCD: Bool, passportUSVisaCDDateOfExpiry: String) {
-        self.passportAustralianMaritimeCrewVisa = passportAustralianMaritimeCrewVisa
-        self.passportCountry = passportCountry
-        self.passportDateOfExpiry = passportDateOfExpiry
-        self.passportDateOfIssue = passportDateOfIssue
-        self.passportEcnr = passportEcnr
-        self.passportNumber = passportNumber
-        self.passportPlaceOfIssue = passportPlaceOfIssue
-        self.passportUSVisaCD = passportUSVisaCD
-        self.passportUSVisaCDDateOfExpiry = passportUSVisaCDDateOfExpiry
+    public init(australianMaritimeCrewVisa: Bool, country: String, dateOfExpiry: String, dateOfIssue: String, ecnr: Bool, number: String, placeOfIssue: String, usVisaCD: Bool, usVisaCDDateOfExpiry: String) {
+        self.australianMaritimeCrewVisa = australianMaritimeCrewVisa
+        self.country = country
+        self.dateOfExpiry = dateOfExpiry
+        self.dateOfIssue = dateOfIssue
+        self.ecnr = ecnr
+        self.number = number
+        self.placeOfIssue = placeOfIssue
+        self.usVisaCD = usVisaCD
+        self.usVisaCDDateOfExpiry = usVisaCDDateOfExpiry
     }
     // MARK: - Fleet Related Code
 }
 
 public class PersonalInformation: Codable {
-    public var personalDetailsBloodGroup: String?
-    public var personalDetailsBoilerSuitSize: String?
-    public var personalDetailsDateOfBirth: String?
-    public var personalDetailsFirstName: String?
-    public var personalDetailsHeight: String?
-    public var personalDetailsLastName: String?
-    public var personalDetailsMiddleName: String?
-    public var personalDetailsNationality: String?
-    public var personalDetailsPlaceOfBirth: String?
-    public var personalDetailsShoeSize: String?
-    public var personalDetailsSmoker: Bool?
-    public var personalDetailsUnionMembership: Bool?
-    public var personalDetailsVegetarian: Bool?
-    public var personalDetailsWeight: String?
-    public var personalDetailsYellowFeverVaccinationBATCHLOTNumber: String?
-    public var personalDetailsYellowFeverVaccinationDateOfExpiry: String?
-    public var personalDetailsYellowFeverVaccinationDateOfIssue: String?
+    public var bloodGroup: String?
+    public var boilerSuitSize: String?
+    public var dateOfBirth: String?
+    public var firstName: String?
+    public var height: String?
+    public var lastName: String?
+    public var middleName: String?
+    public var nationality: String?
+    public var placeOfBirth: String?
+    public var shoeSize: String?
+    public var smoker: Bool?
+    public var unionMembership: Bool?
+    public var vegetarian: Bool?
+    public var weight: String?
+    public var yellowFeverVaccinationBATCHLOTNumber: String?
+    public var yellowFeverVaccinationDateOfExpiry: String?
+    public var yellowFeverVaccinationDateOfIssue: String?
 
     enum CodingKeys: String, CodingKey {
-        case personalDetailsBloodGroup = "personalDetails_bloodGroup"
-        case personalDetailsBoilerSuitSize = "personalDetails_boilerSuitSize"
-        case personalDetailsDateOfBirth = "personalDetails_dateOfBirth"
-        case personalDetailsFirstName = "personalDetails_firstName"
-        case personalDetailsHeight = "personalDetails_height"
-        case personalDetailsLastName = "personalDetails_lastName"
-        case personalDetailsMiddleName = "personalDetails_middleName"
-        case personalDetailsNationality = "personalDetails_nationality"
-        case personalDetailsPlaceOfBirth = "personalDetails_placeOfBirth"
-        case personalDetailsShoeSize = "personalDetails_shoeSize"
-        case personalDetailsSmoker = "personalDetails_smoker"
-        case personalDetailsUnionMembership = "personalDetails_UnionMembership"
-        case personalDetailsVegetarian = "personalDetails_vegetarian"
-        case personalDetailsWeight = "personalDetails_weight"
-        case personalDetailsYellowFeverVaccinationBATCHLOTNumber = "personalDetails_YellowFeverVaccination_BATCH_LOTNumber"
-        case personalDetailsYellowFeverVaccinationDateOfExpiry = "personalDetails_YellowFeverVaccination_DateOfExpiry"
-        case personalDetailsYellowFeverVaccinationDateOfIssue = "personalDetails_YellowFeverVaccination_DateOfIssue"
+        case bloodGroup = "bloodGroup"
+        case boilerSuitSize = "boilerSuitSize"
+        case dateOfBirth = "dateOfBirth"
+        case firstName = "firstName"
+        case height = "height"
+        case lastName = "lastName"
+        case middleName = "middleName"
+        case nationality = "nationality"
+        case placeOfBirth = "placeOfBirth"
+        case shoeSize = "shoeSize"
+        case smoker = "smoker"
+        case unionMembership = "UnionMembership"
+        case vegetarian = "vegetarian"
+        case weight = "weight"
+        case yellowFeverVaccinationBATCHLOTNumber = "YellowFeverVaccination_BATCH_LOTNumber"
+        case yellowFeverVaccinationDateOfExpiry = "YellowFeverVaccination_DateOfExpiry"
+        case yellowFeverVaccinationDateOfIssue = "YellowFeverVaccination_DateOfIssue"
     }
 
     public init() {
-        self.personalDetailsBloodGroup = String()
-        self.personalDetailsBoilerSuitSize = String()
-        self.personalDetailsDateOfBirth = String()
-        self.personalDetailsFirstName = String()
-        self.personalDetailsHeight = String()
-        self.personalDetailsLastName = String()
-        self.personalDetailsMiddleName = String()
-        self.personalDetailsNationality = String()
-        self.personalDetailsPlaceOfBirth = String()
-        self.personalDetailsShoeSize = String()
-        self.personalDetailsSmoker = Bool()
-        self.personalDetailsUnionMembership = Bool()
-        self.personalDetailsVegetarian = Bool()
-        self.personalDetailsWeight = String()
-        self.personalDetailsYellowFeverVaccinationBATCHLOTNumber = String()
-        self.personalDetailsYellowFeverVaccinationDateOfExpiry = String()
-        self.personalDetailsYellowFeverVaccinationDateOfIssue = String()
+        self.bloodGroup = String()
+        self.boilerSuitSize = String()
+        self.dateOfBirth = String()
+        self.firstName = String()
+        self.height = String()
+        self.lastName = String()
+        self.middleName = String()
+        self.nationality = String()
+        self.placeOfBirth = String()
+        self.shoeSize = String()
+        self.smoker = Bool()
+        self.unionMembership = Bool()
+        self.vegetarian = Bool()
+        self.weight = String()
+        self.yellowFeverVaccinationBATCHLOTNumber = String()
+        self.yellowFeverVaccinationDateOfExpiry = String()
+        self.yellowFeverVaccinationDateOfIssue = String()
     }
 
-    public init(personalDetailsBloodGroup: String, personalDetailsBoilerSuitSize: String, personalDetailsDateOfBirth: String, personalDetailsFirstName: String, personalDetailsHeight: String, personalDetailsLastName: String, personalDetailsMiddleName: String, personalDetailsNationality: String, personalDetailsPlaceOfBirth: String, personalDetailsShoeSize: String, personalDetailsSmoker: Bool, personalDetailsUnionMembership: Bool, personalDetailsVegetarian: Bool, personalDetailsWeight: String, personalDetailsYellowFeverVaccinationBATCHLOTNumber: String, personalDetailsYellowFeverVaccinationDateOfExpiry: String, personalDetailsYellowFeverVaccinationDateOfIssue: String) {
-        self.personalDetailsBloodGroup = personalDetailsBloodGroup
-        self.personalDetailsBoilerSuitSize = personalDetailsBoilerSuitSize
-        self.personalDetailsDateOfBirth = personalDetailsDateOfBirth
-        self.personalDetailsFirstName = personalDetailsFirstName
-        self.personalDetailsHeight = personalDetailsHeight
-        self.personalDetailsLastName = personalDetailsLastName
-        self.personalDetailsMiddleName = personalDetailsMiddleName
-        self.personalDetailsNationality = personalDetailsNationality
-        self.personalDetailsPlaceOfBirth = personalDetailsPlaceOfBirth
-        self.personalDetailsShoeSize = personalDetailsShoeSize
-        self.personalDetailsSmoker = personalDetailsSmoker
-        self.personalDetailsUnionMembership = personalDetailsUnionMembership
-        self.personalDetailsVegetarian = personalDetailsVegetarian
-        self.personalDetailsWeight = personalDetailsWeight
-        self.personalDetailsYellowFeverVaccinationBATCHLOTNumber = personalDetailsYellowFeverVaccinationBATCHLOTNumber
-        self.personalDetailsYellowFeverVaccinationDateOfExpiry = personalDetailsYellowFeverVaccinationDateOfExpiry
-        self.personalDetailsYellowFeverVaccinationDateOfIssue = personalDetailsYellowFeverVaccinationDateOfIssue
+    public init(bloodGroup: String, boilerSuitSize: String, dateOfBirth: String, firstName: String, height: String, lastName: String, middleName: String, nationality: String, placeOfBirth: String, shoeSize: String, smoker: Bool, unionMembership: Bool, vegetarian: Bool, weight: String, yellowFeverVaccinationBATCHLOTNumber: String, yellowFeverVaccinationDateOfExpiry: String, yellowFeverVaccinationDateOfIssue: String) {
+        self.bloodGroup = bloodGroup
+        self.boilerSuitSize = boilerSuitSize
+        self.dateOfBirth = dateOfBirth
+        self.firstName = firstName
+        self.height = height
+        self.lastName = lastName
+        self.middleName = middleName
+        self.nationality = nationality
+        self.placeOfBirth = placeOfBirth
+        self.shoeSize = shoeSize
+        self.smoker = smoker
+        self.unionMembership = unionMembership
+        self.vegetarian = vegetarian
+        self.weight = weight
+        self.yellowFeverVaccinationBATCHLOTNumber = yellowFeverVaccinationBATCHLOTNumber
+        self.yellowFeverVaccinationDateOfExpiry = yellowFeverVaccinationDateOfExpiry
+        self.yellowFeverVaccinationDateOfIssue = yellowFeverVaccinationDateOfIssue
     }
     // MARK: - Fleet Related Code
 }
 
 public class QuickVersion: Codable {
-    public var quickApplicationNearestOffice: String?
-    public var quickApplicationRemarks: String?
-    public var quickApplicationYearsOfExperience: String?
+    public var nearestOffice: String?
+    public var remarks: String?
+    public var yearsOfExperience: String?
 
     enum CodingKeys: String, CodingKey {
-        case quickApplicationNearestOffice = "quickApplication_nearestOffice"
-        case quickApplicationRemarks = "quickApplication_Remarks"
-        case quickApplicationYearsOfExperience = "quickApplication_YearsOfExperience"
+        case nearestOffice = "nearestOffice"
+        case remarks = "Remarks"
+        case yearsOfExperience = "YearsOfExperience"
     }
 
     public init() {
-        self.quickApplicationNearestOffice = String()
-        self.quickApplicationRemarks = String()
-        self.quickApplicationYearsOfExperience = String()
+        self.nearestOffice = String()
+        self.remarks = String()
+        self.yearsOfExperience = String()
     }
 
-    public init(quickApplicationNearestOffice: String, quickApplicationRemarks: String, quickApplicationYearsOfExperience: String) {
-        self.quickApplicationNearestOffice = quickApplicationNearestOffice
-        self.quickApplicationRemarks = quickApplicationRemarks
-        self.quickApplicationYearsOfExperience = quickApplicationYearsOfExperience
+    public init(nearestOffice: String, remarks: String, yearsOfExperience: String) {
+        self.nearestOffice = nearestOffice
+        self.remarks = remarks
+        self.yearsOfExperience = yearsOfExperience
     }
     // MARK: - Fleet Related Code
 }
 
 public class SeaServiceExperience: Codable {
-    public var seaServiceExperienceBrakeHorsepower: String?
-    public var seaServiceExperienceEngineType: String?
-    public var seaServiceExperienceVesselSize: String?
-    public var seaServiceExperienceVesselType: String?
+    public var brakeHorsepower: String?
+    public var engineType: String?
+    public var vesselSize: String?
+    public var vesselType: String?
 
     enum CodingKeys: String, CodingKey {
-        case seaServiceExperienceBrakeHorsepower = "seaServiceExperience_brakeHorsepower"
-        case seaServiceExperienceEngineType = "seaServiceExperience_engineType"
-        case seaServiceExperienceVesselSize = "seaServiceExperience_vesselSize"
-        case seaServiceExperienceVesselType = "seaServiceExperience_vesselType"
+        case brakeHorsepower = "brakeHorsepower"
+        case engineType = "engineType"
+        case vesselSize = "vesselSize"
+        case vesselType = "vesselType"
     }
 
     public init() {
-        self.seaServiceExperienceBrakeHorsepower = String()
-        self.seaServiceExperienceEngineType = String()
-        self.seaServiceExperienceVesselSize = String()
-        self.seaServiceExperienceVesselType = String()
+        self.brakeHorsepower = String()
+        self.engineType = String()
+        self.vesselSize = String()
+        self.vesselType = String()
     }
 
-    public init(seaServiceExperienceBrakeHorsepower: String, seaServiceExperienceEngineType: String, seaServiceExperienceVesselSize: String, seaServiceExperienceVesselType: String) {
-        self.seaServiceExperienceBrakeHorsepower = seaServiceExperienceBrakeHorsepower
-        self.seaServiceExperienceEngineType = seaServiceExperienceEngineType
-        self.seaServiceExperienceVesselSize = seaServiceExperienceVesselSize
-        self.seaServiceExperienceVesselType = seaServiceExperienceVesselType
+    public init(brakeHorsepower: String, engineType: String, vesselSize: String, vesselType: String) {
+        self.brakeHorsepower = brakeHorsepower
+        self.engineType = engineType
+        self.vesselSize = vesselSize
+        self.vesselType = vesselType
     }
     // MARK: - Fleet Related Code
 }
@@ -616,7 +623,7 @@ public extension JobApplication {
 public extension AppliedPosition {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(AppliedPosition.self, from: data)
-        self.init(appliedPositionAvailableFrom: me.appliedPositionAvailableFrom, appliedPositionLowerRank: me.appliedPositionLowerRank, appliedPositionRank: me.appliedPositionRank)
+        self.init(availableFrom: me.availableFrom, lowerRank: me.lowerRank, rank: me.rank)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -642,7 +649,7 @@ public extension AppliedPosition {
 public extension CertificatesOfCompetency {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(CertificatesOfCompetency.self, from: data)
-        self.init(certificatesCompetencyCountry: me.certificatesCompetencyCountry)
+        self.init(country: me.country)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -668,7 +675,7 @@ public extension CertificatesOfCompetency {
 public extension ContactInformation {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(ContactInformation.self, from: data)
-        self.init(contactInformationCityLocal: me.contactInformationCityLocal, contactInformationCityPermanent: me.contactInformationCityPermanent, contactInformationCountryLocal: me.contactInformationCountryLocal, contactInformationCountryPermanent: me.contactInformationCountryPermanent, contactInformationEmail: me.contactInformationEmail, contactInformationPhoneHomeLocal: me.contactInformationPhoneHomeLocal, contactInformationPhoneHomePermanent: me.contactInformationPhoneHomePermanent, contactInformationPhoneHomeQuickapply: me.contactInformationPhoneHomeQuickapply, contactInformationPhoneMobileLocal: me.contactInformationPhoneMobileLocal, contactInformationPhoneMobilePermanent: me.contactInformationPhoneMobilePermanent, contactInformationPhoneMobileQuickapply: me.contactInformationPhoneMobileQuickapply, contactInformationPostcodeLocal: me.contactInformationPostcodeLocal, contactInformationPostcodePermanent: me.contactInformationPostcodePermanent, contactInformationStateLocal: me.contactInformationStateLocal, contactInformationStatePermanent: me.contactInformationStatePermanent, contactInformationStreetFirstLocal: me.contactInformationStreetFirstLocal, contactInformationStreetFirstPermanent: me.contactInformationStreetFirstPermanent, contactInformationStreetSecondLocal: me.contactInformationStreetSecondLocal, contactInformationStreetSecondPermanent: me.contactInformationStreetSecondPermanent)
+        self.init(cityLocal: me.cityLocal, cityPermanent: me.cityPermanent, countryLocal: me.countryLocal, countryPermanent: me.countryPermanent, email: me.email, phoneHomeLocal: me.phoneHomeLocal, phoneHomePermanent: me.phoneHomePermanent, phoneHomeQuickapply: me.phoneHomeQuickapply, phoneMobileLocal: me.phoneMobileLocal, phoneMobilePermanent: me.phoneMobilePermanent, phoneMobileQuickapply: me.phoneMobileQuickapply, postcodeLocal: me.postcodeLocal, postcodePermanent: me.postcodePermanent, stateLocal: me.stateLocal, statePermanent: me.statePermanent, streetFirstLocal: me.streetFirstLocal, streetFirstPermanent: me.streetFirstPermanent, streetSecondLocal: me.streetSecondLocal, streetSecondPermanent: me.streetSecondPermanent, valid: me.valid)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -694,7 +701,7 @@ public extension ContactInformation {
 public extension FamilyData {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(FamilyData.self, from: data)
-        self.init(familyDataMembers: me.familyDataMembers)
+        self.init(members: me.members)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -717,10 +724,10 @@ public extension FamilyData {
     }
 }
 
-public extension FamilyDataMember {
+public extension Member {
     public convenience init(data: Data) throws {
-        let me = try JSONDecoder().decode(FamilyDataMember.self, from: data)
-        self.init(familyDataDateOfBirth: me.familyDataDateOfBirth, familyDataDateOfExpiry: me.familyDataDateOfExpiry, familyDataFirstName: me.familyDataFirstName, familyDataLastName: me.familyDataLastName, familyDataPassportNumber: me.familyDataPassportNumber, familyDataPlaceOfIssue: me.familyDataPlaceOfIssue)
+        let me = try JSONDecoder().decode(Member.self, from: data)
+        self.init(dateOfBirth: me.dateOfBirth, dateOfExpiry: me.dateOfExpiry, firstName: me.firstName, lastName: me.lastName, number: me.number, placeOfIssue: me.placeOfIssue)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -746,7 +753,7 @@ public extension FamilyDataMember {
 public extension NextOfKin {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(NextOfKin.self, from: data)
-        self.init(nextOfKinCity: me.nextOfKinCity, nextOfKinCountry: me.nextOfKinCountry, nextOfKinDateOfBirth: me.nextOfKinDateOfBirth, nextOfKinName: me.nextOfKinName, nextOfKinNameAlternate: me.nextOfKinNameAlternate, nextOfKinPhoneHome: me.nextOfKinPhoneHome, nextOfKinPhoneMobile: me.nextOfKinPhoneMobile, nextOfKinPostcode: me.nextOfKinPostcode, nextOfKinRelationship: me.nextOfKinRelationship, nextOfKinRelationshipAlternate: me.nextOfKinRelationshipAlternate, nextOfKinState: me.nextOfKinState, nextOfKinStreetFirst: me.nextOfKinStreetFirst, nextOfKinStreetSecond: me.nextOfKinStreetSecond)
+        self.init(city: me.city, country: me.country, dateOfBirth: me.dateOfBirth, name: me.name, nameAlternate: me.nameAlternate, phoneHome: me.phoneHome, phoneMobile: me.phoneMobile, postcode: me.postcode, relationship: me.relationship, relationshipAlternate: me.relationshipAlternate, state: me.state, streetFirst: me.streetFirst, streetSecond: me.streetSecond, valid: me.valid)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -772,7 +779,7 @@ public extension NextOfKin {
 public extension PassportVisa {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(PassportVisa.self, from: data)
-        self.init(passportAustralianMaritimeCrewVisa: me.passportAustralianMaritimeCrewVisa, passportCountry: me.passportCountry, passportDateOfExpiry: me.passportDateOfExpiry, passportDateOfIssue: me.passportDateOfIssue, passportEcnr: me.passportEcnr, passportNumber: me.passportNumber, passportPlaceOfIssue: me.passportPlaceOfIssue, passportUSVisaCD: me.passportUSVisaCD, passportUSVisaCDDateOfExpiry: me.passportUSVisaCDDateOfExpiry)
+        self.init(australianMaritimeCrewVisa: me.australianMaritimeCrewVisa, country: me.country, dateOfExpiry: me.dateOfExpiry, dateOfIssue: me.dateOfIssue, ecnr: me.ecnr, number: me.number, placeOfIssue: me.placeOfIssue, usVisaCD: me.usVisaCD, usVisaCDDateOfExpiry: me.usVisaCDDateOfExpiry)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -798,7 +805,7 @@ public extension PassportVisa {
 public extension PersonalInformation {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(PersonalInformation.self, from: data)
-        self.init(personalDetailsBloodGroup: me.personalDetailsBloodGroup, personalDetailsBoilerSuitSize: me.personalDetailsBoilerSuitSize, personalDetailsDateOfBirth: me.personalDetailsDateOfBirth, personalDetailsFirstName: me.personalDetailsFirstName, personalDetailsHeight: me.personalDetailsHeight, personalDetailsLastName: me.personalDetailsLastName, personalDetailsMiddleName: me.personalDetailsMiddleName, personalDetailsNationality: me.personalDetailsNationality, personalDetailsPlaceOfBirth: me.personalDetailsPlaceOfBirth, personalDetailsShoeSize: me.personalDetailsShoeSize, personalDetailsSmoker: me.personalDetailsSmoker, personalDetailsUnionMembership: me.personalDetailsUnionMembership, personalDetailsVegetarian: me.personalDetailsVegetarian, personalDetailsWeight: me.personalDetailsWeight, personalDetailsYellowFeverVaccinationBATCHLOTNumber: me.personalDetailsYellowFeverVaccinationBATCHLOTNumber, personalDetailsYellowFeverVaccinationDateOfExpiry: me.personalDetailsYellowFeverVaccinationDateOfExpiry, personalDetailsYellowFeverVaccinationDateOfIssue: me.personalDetailsYellowFeverVaccinationDateOfIssue)
+        self.init(bloodGroup: me.bloodGroup, boilerSuitSize: me.boilerSuitSize, dateOfBirth: me.dateOfBirth, firstName: me.firstName, height: me.height, lastName: me.lastName, middleName: me.middleName, nationality: me.nationality, placeOfBirth: me.placeOfBirth, shoeSize: me.shoeSize, smoker: me.smoker, unionMembership: me.unionMembership, vegetarian: me.vegetarian, weight: me.weight, yellowFeverVaccinationBATCHLOTNumber: me.yellowFeverVaccinationBATCHLOTNumber, yellowFeverVaccinationDateOfExpiry: me.yellowFeverVaccinationDateOfExpiry, yellowFeverVaccinationDateOfIssue: me.yellowFeverVaccinationDateOfIssue)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -824,7 +831,7 @@ public extension PersonalInformation {
 public extension QuickVersion {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(QuickVersion.self, from: data)
-        self.init(quickApplicationNearestOffice: me.quickApplicationNearestOffice, quickApplicationRemarks: me.quickApplicationRemarks, quickApplicationYearsOfExperience: me.quickApplicationYearsOfExperience)
+        self.init(nearestOffice: me.nearestOffice, remarks: me.remarks, yearsOfExperience: me.yearsOfExperience)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -850,7 +857,7 @@ public extension QuickVersion {
 public extension SeaServiceExperience {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(SeaServiceExperience.self, from: data)
-        self.init(seaServiceExperienceBrakeHorsepower: me.seaServiceExperienceBrakeHorsepower, seaServiceExperienceEngineType: me.seaServiceExperienceEngineType, seaServiceExperienceVesselSize: me.seaServiceExperienceVesselSize, seaServiceExperienceVesselType: me.seaServiceExperienceVesselType)
+        self.init(brakeHorsepower: me.brakeHorsepower, engineType: me.engineType, vesselSize: me.vesselSize, vesselType: me.vesselType)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
