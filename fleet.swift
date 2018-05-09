@@ -28,6 +28,17 @@
 
 import Foundation
 
+
+extension Encodable {
+    func asDictionary() throws -> [String: Any] {
+        let data = try JSONEncoder().encode(self)
+        guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+            throw NSError()
+        }
+        return dictionary
+    }
+}
+
 /// Generated from source.json with shasum c696a95adeb0e1d82bb25144518a4f33fe538004
 public class JobApplication: Codable {
     public var appliedPosition: AppliedPosition?
