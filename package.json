@@ -8,6 +8,7 @@
   "scripts": {
     "pub": "script/publish.sh",
     "prepare": "npm run build",
+    "preinstall": "cd src/core ; npm install",
     "build": "script/build.ts",
     "test": "script/test",
     "start": "script/watch",
@@ -35,7 +36,6 @@
     "stream-json": "0.5.2",
     "string-to-stream": "^1.1.0",
     "typescript": "~2.8.3",
-    "typescript-json-schema": "quicktype/typescript-json-schema#d16083d29c8b6702c666a981fa6b21113300c059",
     "unicode-properties": "github:quicktype/unicode-properties#dist",
     "universal-analytics": "^0.4.16",
     "urijs": "^1.19.1",

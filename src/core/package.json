@@ -24,6 +24,7 @@
         "stream-json": "0.5.2",
         "string-to-stream": "^1.1.0",
         "unicode-properties": "github:quicktype/unicode-properties#dist",
+        "typescript-json-schema": "quicktype/typescript-json-schema#d16083d29c8b6702c666a981fa6b21113300c059",
         "urijs": "^1.19.1"
     },
     "devDependencies": {
