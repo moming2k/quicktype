@@ -5,6 +5,24 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/quicktype/quicktype",
+  "watch": {
+    "test_local": {
+      "patterns": [
+        "data/*.json",
+        "test/*.js",
+        "test/data/*.json",
+        "src/*.js",
+        "src/*/*.js",
+        "src/*/*/*.js",
+        "src/*.ts",
+        "src/*/*.ts",
+        "src/*/*/*.ts",
+        "serverless.yml"
+      ],
+      "extensions": "js,yml",
+      "quiet": false
+    }
+  },
   "scripts": {
     "pub": "script/publish.sh",
     "prepare": "npm run build",
@@ -12,7 +30,9 @@
     "test": "npm run build && npm run tslint && jest && script/test",
     "start": "script/watch",
     "pkg": "script/make-pkgs.sh",
-    "tslint": "tslint --project src --exclude 'src/get-stream/**' --exclude 'src/__tests__/**'"
+    "tslint": "tslint --project src --exclude 'src/get-stream/**' --exclude 'src/__tests__/**'",
+    "test_local": "script/quicktype --lang fleet_swift --struct-or-class=class -t JobApplication --access-level public --density=normal  -s schema ../schema.json > fleet.swift | say done",
+    "watch_export": "npm-watch test_local"
   },
   "dependencies": {
     "chalk": "^2.4.1",
@@ -38,7 +58,8 @@
     "unicode-properties": "github:quicktype/unicode-properties#dist",
     "universal-analytics": "^0.4.16",
     "urijs": "^1.19.1",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "npm-watch": "^0.3.0"
   },
   "devDependencies": {
     "@types/chance": "^1.0.0",

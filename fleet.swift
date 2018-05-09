@@ -30,14 +30,64 @@ import Foundation
 
 
 extension Encodable {
-    func asDictionary() throws -> [String: Any] {
+    public func asDictionary() throws -> [String: Any] {
         let data = try JSONEncoder().encode(self)
         guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
             throw NSError()
         }
         return dictionary
     }
+
+    // func asJSON() throws -> String? {
+    //     let data = try JSONEncoder().encode(self)
+    //     let jsonString = String(data: data, encoding: .utf8)
+    //     return jsonString
+    // }
+
+    public func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
+    }
+
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
+    }
+
+    static func == (lhs:Self, rhs: Self) -> Bool {
+        var result = false
+        do {
+            let lhsJson = try lhs.asJSON()
+            let rhsJson = try rhs.asJSON()
+            if (lhsJson == rhsJson)
+            {
+                result = true
+            }
+            return result
+        }
+        catch {
+            return false
+        }
+    }
+
+    public func isEqual(_ object: Any?) -> Bool {
+
+        if let o = object as? Self {
+            return self == o
+        }
+
+        return false
+    }
 }
+
+extension Decodable {
+    static public func initFromJSON(json: String?) throws -> Self {
+        guard let jsonStr = json, let data = jsonStr.data(using: .utf8) else { throw NSError() }
+
+        let jsonDecoder = JSONDecoder()
+        let object = try jsonDecoder.decode(Self.self, from: data)
+        return object
+    }
+}
+
 
 /// Generated from source.json with shasum c696a95adeb0e1d82bb25144518a4f33fe538004
 public class JobApplication: Codable {

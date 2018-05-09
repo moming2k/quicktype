@@ -418,14 +418,64 @@ export class SwiftRenderer extends ConvenienceRenderer {
         this.ensureBlankLine();
         this.emitMultiline(`
 extension Encodable {
-    func asDictionary() throws -> [String: Any] {
+    public func asDictionary() throws -> [String: Any] {
         let data = try JSONEncoder().encode(self)
         guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
             throw NSError()
         }
         return dictionary
     }
-}`);
+
+    // func asJSON() throws -> String? {
+    //     let data = try JSONEncoder().encode(self)
+    //     let jsonString = String(data: data, encoding: .utf8)
+    //     return jsonString
+    // }
+
+    public func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
+    }
+
+    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
+    }
+
+    static func == (lhs:Self, rhs: Self) -> Bool {
+        var result = false
+        do {
+            let lhsJson = try lhs.asJSON()
+            let rhsJson = try rhs.asJSON()
+            if (lhsJson == rhsJson)
+            {
+                result = true
+            }
+            return result
+        }
+        catch {
+            return false
+        }
+    }
+    
+    public func isEqual(_ object: Any?) -> Bool {
+        
+        if let o = object as? Self {
+            return self == o
+        }
+        
+        return false
+    }
+}
+
+extension Decodable {
+    static public func initFromJSON(json: String?) throws -> Self {
+        guard let jsonStr = json, let data = jsonStr.data(using: .utf8) else { throw NSError() }
+        
+        let jsonDecoder = JSONDecoder()
+        let object = try jsonDecoder.decode(Self.self, from: data)
+        return object
+    }
+}
+`);
 
         if (!this._justTypes && this._alamofire) {
             this.emitLine("import Alamofire");
@@ -488,6 +538,14 @@ extension Encodable {
             }
         };
 
+        const removeFirstOccurrence = (str: string, searchstr: string) => {
+            let index = str.indexOf(searchstr);
+            if (index === -1) {
+                return str;
+            }
+            return str.slice(0, index) + str.slice(index + searchstr.length);
+        };
+
         const swiftTypeForceOptional = (p: ClassProperty) => {
             return [this.swiftType(p.type, true, true), "?"];
         };
@@ -538,6 +596,11 @@ extension Encodable {
                 emitLastProperty();
             } else {
                 this.forEachClassProperty(c, "none", (name, jsonName, p) => {
+                    let jsonNameParts = jsonName.split("_");
+                    let finalName = "";
+                    if (jsonNameParts.length > 1) {
+                        finalName = removeFirstOccurrence(name + "", jsonNameParts[0]);
+                    }
                     const description = this.descriptionForClassProperty(c, jsonName);
                     this.emitDescription(description);
                     this.emitLine(this.accessLevel, "var ", name, ": ", swiftTypeForceOptional(p));
