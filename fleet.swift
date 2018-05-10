@@ -96,7 +96,7 @@ extension Decodable {
 }
 
 
-public class JobApplication: Codable {
+public class BasicJobApplication: Codable {
     public var appliedPosition: AppliedPosition?
     public var certificatesOfCompetency: CertificatesOfCompetency?
     public var contactInformation: ContactInformation?
@@ -109,9 +109,6 @@ public class JobApplication: Codable {
     public var submitDate: String?
     public var submitID: String?
     public var type: String?
-
-    public static var full = JobApplication()
-    public static var quick = JobApplication()
 
     enum CodingKeys: String, CodingKey {
         case appliedPosition = "appliedPosition"
@@ -165,9 +162,6 @@ public class AppliedPosition: Codable {
     public var lowerRank: Bool?
     public var rank: String?
 
-    public static var full = JobApplication()
-    public static var quick = JobApplication()
-
     enum CodingKeys: String, CodingKey {
         case availableFrom = "availableFrom"
         case lowerRank = "lowerRank"
@@ -190,9 +184,6 @@ public class AppliedPosition: Codable {
 
 public class CertificatesOfCompetency: Codable {
     public var country: String?
-
-    public static var full = JobApplication()
-    public static var quick = JobApplication()
 
     enum CodingKeys: String, CodingKey {
         case country = "Country"
@@ -229,9 +220,6 @@ public class ContactInformation: Codable {
     public var streetSecondLocal: String?
     public var streetSecondPermanent: String?
     public var valid: Bool?
-
-    public static var full = JobApplication()
-    public static var quick = JobApplication()
 
     enum CodingKeys: String, CodingKey {
         case cityLocal = "city_local"
@@ -307,9 +295,6 @@ public class ContactInformation: Codable {
 public class FamilyData: Codable {
     public var members: [Member]?
 
-    public static var full = JobApplication()
-    public static var quick = JobApplication()
-
     enum CodingKeys: String, CodingKey {
         case members = "members"
     }
@@ -331,9 +316,6 @@ public class Member: Codable {
     public var lastName: String?
     public var number: String?
     public var placeOfIssue: String?
-
-    public static var full = JobApplication()
-    public static var quick = JobApplication()
 
     enum CodingKeys: String, CodingKey {
         case dateOfBirth = "date_of_birth"
@@ -379,9 +361,6 @@ public class NextOfKin: Codable {
     public var streetFirst: String?
     public var streetSecond: String?
     public var valid: Bool?
-
-    public static var full = JobApplication()
-    public static var quick = JobApplication()
 
     enum CodingKeys: String, CodingKey {
         case city = "city"
@@ -447,9 +426,6 @@ public class PassportVisa: Codable {
     public var usVisaCD: Bool?
     public var usVisaCDDateOfExpiry: String?
 
-    public static var full = JobApplication()
-    public static var quick = JobApplication()
-
     enum CodingKeys: String, CodingKey {
         case australianMaritimeCrewVisa = "Australian_Maritime_Crew_Visa"
         case country = "country"
@@ -506,9 +482,6 @@ public class PersonalInformation: Codable {
     public var yellowFeverVaccinationBATCHLOTNumber: String?
     public var yellowFeverVaccinationDateOfExpiry: String?
     public var yellowFeverVaccinationDateOfIssue: String?
-
-    public static var full = JobApplication()
-    public static var quick = JobApplication()
 
     enum CodingKeys: String, CodingKey {
         case bloodGroup = "bloodGroup"
@@ -577,9 +550,6 @@ public class QuickVersion: Codable {
     public var remarks: String?
     public var yearsOfExperience: String?
 
-    public static var full = JobApplication()
-    public static var quick = JobApplication()
-
     enum CodingKeys: String, CodingKey {
         case nearestOffice = "nearestOffice"
         case remarks = "Remarks"
@@ -606,9 +576,6 @@ public class SeaServiceExperience: Codable {
     public var vesselSize: String?
     public var vesselType: String?
 
-    public static var full = JobApplication()
-    public static var quick = JobApplication()
-
     enum CodingKeys: String, CodingKey {
         case brakeHorsepower = "brakeHorsepower"
         case engineType = "engineType"
@@ -634,9 +601,9 @@ public class SeaServiceExperience: Codable {
 
 // MARK: Convenience initializers
 
-public extension JobApplication {
+public extension BasicJobApplication {
     public convenience init(data: Data) throws {
-        let me = try JSONDecoder().decode(JobApplication.self, from: data)
+        let me = try JSONDecoder().decode(BasicJobApplication.self, from: data)
         self.init(appliedPosition: me.appliedPosition, certificatesOfCompetency: me.certificatesOfCompetency, contactInformation: me.contactInformation, familyData: me.familyData, nextOfKin: me.nextOfKin, passportVisa: me.passportVisa, personalInformation: me.personalInformation, quickVersion: me.quickVersion, seaServiceExperience: me.seaServiceExperience, submitDate: me.submitDate, submitID: me.submitID, type: me.type)
     }
 

@@ -482,6 +482,12 @@ extension Decodable {
         return object
     }
 }
+
+public class JobApplication: BasicJobApplication {
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
+}
+
 `);
 
         if (!this._justTypes && this._alamofire) {
@@ -620,10 +626,10 @@ extension Decodable {
                     return group.every(p => p.label === undefined);
                 });
                 if (!allPropertiesRedundant && !c.getProperties().isEmpty()) {
-                    // if(className.)
-                    this.ensureBlankLine();
-                    this.emitLine("public static var full = JobApplication()");
-                    this.emitLine("public static var quick = JobApplication()");
+                    // this.emitLine("//", typeof className);
+                    // this.ensureBlankLine();
+                    // this.emitLine("public static var full = JobApplication()");
+                    // this.emitLine("public static var quick = JobApplication()");
                     this.ensureBlankLine();
                     this.emitBlock("enum CodingKeys: String, CodingKey", () => {
                         for (const group of groups) {

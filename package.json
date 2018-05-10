@@ -31,7 +31,7 @@
     "start": "script/watch",
     "pkg": "script/make-pkgs.sh",
     "tslint": "tslint --project src --exclude 'src/get-stream/**' --exclude 'src/__tests__/**'",
-    "test_local": "script/quickesttype --lang fleet_swift --struct-or-class=class -t JobApplication --access-level public --density=normal  -s schema ../schema.json > fleet.swift | say done",
+    "test_local": "script/quickesttype --lang fleet_swift --struct-or-class=class -t BasicJobApplication --access-level public --density=normal  -s schema ../schema.json > fleet.swift | say done",
     "watch_export": "npm-watch test_local"
   },
   "dependencies": {
