@@ -334,35 +334,47 @@ public class Member: Codable {
     public var dateOfBirth: String?
     public var dateOfExpiry: String?
     public var firstName: String?
+    public var gender: Bool?
     public var lastName: String?
-    public var number: String?
+    public var memberID: String?
+    public var passportNumber: String?
     public var placeOfIssue: String?
+    public var relationship: Bool?
 
     enum CodingKeys: String, CodingKey {
         case dateOfBirth = "date_of_birth"
         case dateOfExpiry = "date_of_expiry"
         case firstName = "first_name"
+        case gender = "gender"
         case lastName = "last_name"
-        case number = "number"
+        case memberID = "memberID"
+        case passportNumber = "passport_number"
         case placeOfIssue = "place_of_issue"
+        case relationship = "relationship"
     }
 
     public init() {
         self.dateOfBirth = String()
         self.dateOfExpiry = String()
         self.firstName = String()
+        self.gender = Bool()
         self.lastName = String()
-        self.number = String()
+        self.memberID = String()
+        self.passportNumber = String()
         self.placeOfIssue = String()
+        self.relationship = Bool()
     }
 
-    public init(dateOfBirth: String?, dateOfExpiry: String?, firstName: String?, lastName: String?, number: String?, placeOfIssue: String?) {
+    public init(dateOfBirth: String?, dateOfExpiry: String?, firstName: String?, gender: Bool?, lastName: String?, memberID: String?, passportNumber: String?, placeOfIssue: String?, relationship: Bool?) {
         self.dateOfBirth = dateOfBirth
         self.dateOfExpiry = dateOfExpiry
         self.firstName = firstName
+        self.gender = gender
         self.lastName = lastName
-        self.number = number
+        self.memberID = memberID
+        self.passportNumber = passportNumber
         self.placeOfIssue = placeOfIssue
+        self.relationship = relationship
     }
     // MARK: - Fleet Related Code
 }
@@ -825,7 +837,7 @@ public extension FamilyData {
 public extension Member {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(Member.self, from: data)
-        self.init(dateOfBirth: me.dateOfBirth, dateOfExpiry: me.dateOfExpiry, firstName: me.firstName, lastName: me.lastName, number: me.number, placeOfIssue: me.placeOfIssue)
+        self.init(dateOfBirth: me.dateOfBirth, dateOfExpiry: me.dateOfExpiry, firstName: me.firstName, gender: me.gender, lastName: me.lastName, memberID: me.memberID, passportNumber: me.passportNumber, placeOfIssue: me.placeOfIssue, relationship: me.relationship)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
