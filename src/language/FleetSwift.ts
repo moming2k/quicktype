@@ -417,6 +417,13 @@ export class SwiftRenderer extends ConvenienceRenderer {
         this.emitLine("import Foundation");
         this.ensureBlankLine();
         this.emitMultiline(`
+public enum JobApplicationType: String {
+    case full = "full"
+    case quick = "quick"
+}        
+`);
+        this.ensureBlankLine();
+        this.emitMultiline(`
 extension Encodable {
     public func asDictionary() throws -> [String: Any] {
         let data = try JSONEncoder().encode(self)
@@ -443,8 +450,8 @@ extension Encodable {
     static func == (lhs:Self, rhs: Self) -> Bool {
         var result = false
         do {
-            let lhsJson = try lhs.asJSON()
-            let rhsJson = try rhs.asJSON()
+            let lhsJson = try lhs.jsonString()
+            let rhsJson = try rhs.jsonString()
             if (lhsJson == rhsJson)
             {
                 result = true
@@ -613,6 +620,10 @@ extension Decodable {
                     return group.every(p => p.label === undefined);
                 });
                 if (!allPropertiesRedundant && !c.getProperties().isEmpty()) {
+                    // if(className.)
+                    this.ensureBlankLine();
+                    this.emitLine("public static var full = JobApplication()");
+                    this.emitLine("public static var quick = JobApplication()");
                     this.ensureBlankLine();
                     this.emitBlock("enum CodingKeys: String, CodingKey", () => {
                         for (const group of groups) {
@@ -655,7 +666,7 @@ extension Decodable {
                 let properties: Sourcelike[] = [];
                 this.forEachClassProperty(c, "none", (name, _, p) => {
                     if (properties.length > 0) properties.push(", ");
-                    properties.push(name, ": ", swiftType(p));
+                    properties.push(name, ": ", swiftType(p), "?");
                 });
                 this.emitBlockWithAccess(["init(", ...properties, ")"], () => {
                     this.forEachClassProperty(c, "none", name => {
