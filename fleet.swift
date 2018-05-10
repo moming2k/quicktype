@@ -29,6 +29,13 @@
 import Foundation
 
 
+public enum JobApplicationType: String {
+    case full = "full"
+    case quick = "quick"
+}        
+
+
+
 extension Encodable {
     public func asDictionary() throws -> [String: Any] {
         let data = try JSONEncoder().encode(self)
@@ -55,8 +62,8 @@ extension Encodable {
     static func == (lhs:Self, rhs: Self) -> Bool {
         var result = false
         do {
-            let lhsJson = try lhs.asJSON()
-            let rhsJson = try rhs.asJSON()
+            let lhsJson = try lhs.jsonString()
+            let rhsJson = try rhs.jsonString()
             if (lhsJson == rhsJson)
             {
                 result = true
@@ -103,6 +110,9 @@ public class JobApplication: Codable {
     public var submitID: String?
     public var type: String?
 
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
+
     enum CodingKeys: String, CodingKey {
         case appliedPosition = "appliedPosition"
         case certificatesOfCompetency = "certificatesOfCompetency"
@@ -133,7 +143,7 @@ public class JobApplication: Codable {
         self.type = String()
     }
 
-    public init(appliedPosition: AppliedPosition, certificatesOfCompetency: CertificatesOfCompetency, contactInformation: ContactInformation, familyData: FamilyData, nextOfKin: NextOfKin, passportVisa: PassportVisa, personalInformation: PersonalInformation, quickVersion: QuickVersion, seaServiceExperience: SeaServiceExperience, submitDate: String, submitID: String, type: String) {
+    public init(appliedPosition: AppliedPosition?, certificatesOfCompetency: CertificatesOfCompetency?, contactInformation: ContactInformation?, familyData: FamilyData?, nextOfKin: NextOfKin?, passportVisa: PassportVisa?, personalInformation: PersonalInformation?, quickVersion: QuickVersion?, seaServiceExperience: SeaServiceExperience?, submitDate: String?, submitID: String?, type: String?) {
         self.appliedPosition = appliedPosition
         self.certificatesOfCompetency = certificatesOfCompetency
         self.contactInformation = contactInformation
@@ -155,6 +165,9 @@ public class AppliedPosition: Codable {
     public var lowerRank: Bool?
     public var rank: String?
 
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
+
     enum CodingKeys: String, CodingKey {
         case availableFrom = "availableFrom"
         case lowerRank = "lowerRank"
@@ -167,7 +180,7 @@ public class AppliedPosition: Codable {
         self.rank = String()
     }
 
-    public init(availableFrom: String, lowerRank: Bool, rank: String) {
+    public init(availableFrom: String?, lowerRank: Bool?, rank: String?) {
         self.availableFrom = availableFrom
         self.lowerRank = lowerRank
         self.rank = rank
@@ -178,6 +191,9 @@ public class AppliedPosition: Codable {
 public class CertificatesOfCompetency: Codable {
     public var country: String?
 
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
+
     enum CodingKeys: String, CodingKey {
         case country = "Country"
     }
@@ -186,7 +202,7 @@ public class CertificatesOfCompetency: Codable {
         self.country = String()
     }
 
-    public init(country: String) {
+    public init(country: String?) {
         self.country = country
     }
     // MARK: - Fleet Related Code
@@ -213,6 +229,9 @@ public class ContactInformation: Codable {
     public var streetSecondLocal: String?
     public var streetSecondPermanent: String?
     public var valid: Bool?
+
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
 
     enum CodingKeys: String, CodingKey {
         case cityLocal = "city_local"
@@ -260,7 +279,7 @@ public class ContactInformation: Codable {
         self.valid = Bool()
     }
 
-    public init(cityLocal: String, cityPermanent: String, countryLocal: String, countryPermanent: String, email: String, phoneHomeLocal: String, phoneHomePermanent: String, phoneHomeQuickapply: String, phoneMobileLocal: String, phoneMobilePermanent: String, phoneMobileQuickapply: String, postcodeLocal: String, postcodePermanent: String, stateLocal: String, statePermanent: String, streetFirstLocal: String, streetFirstPermanent: String, streetSecondLocal: String, streetSecondPermanent: String, valid: Bool) {
+    public init(cityLocal: String?, cityPermanent: String?, countryLocal: String?, countryPermanent: String?, email: String?, phoneHomeLocal: String?, phoneHomePermanent: String?, phoneHomeQuickapply: String?, phoneMobileLocal: String?, phoneMobilePermanent: String?, phoneMobileQuickapply: String?, postcodeLocal: String?, postcodePermanent: String?, stateLocal: String?, statePermanent: String?, streetFirstLocal: String?, streetFirstPermanent: String?, streetSecondLocal: String?, streetSecondPermanent: String?, valid: Bool?) {
         self.cityLocal = cityLocal
         self.cityPermanent = cityPermanent
         self.countryLocal = countryLocal
@@ -288,6 +307,9 @@ public class ContactInformation: Codable {
 public class FamilyData: Codable {
     public var members: [Member]?
 
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
+
     enum CodingKeys: String, CodingKey {
         case members = "members"
     }
@@ -296,7 +318,7 @@ public class FamilyData: Codable {
         self.members = [Member]()
     }
 
-    public init(members: [Member]) {
+    public init(members: [Member]?) {
         self.members = members
     }
     // MARK: - Fleet Related Code
@@ -309,6 +331,9 @@ public class Member: Codable {
     public var lastName: String?
     public var number: String?
     public var placeOfIssue: String?
+
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
 
     enum CodingKeys: String, CodingKey {
         case dateOfBirth = "date_of_birth"
@@ -328,7 +353,7 @@ public class Member: Codable {
         self.placeOfIssue = String()
     }
 
-    public init(dateOfBirth: String, dateOfExpiry: String, firstName: String, lastName: String, number: String, placeOfIssue: String) {
+    public init(dateOfBirth: String?, dateOfExpiry: String?, firstName: String?, lastName: String?, number: String?, placeOfIssue: String?) {
         self.dateOfBirth = dateOfBirth
         self.dateOfExpiry = dateOfExpiry
         self.firstName = firstName
@@ -354,6 +379,9 @@ public class NextOfKin: Codable {
     public var streetFirst: String?
     public var streetSecond: String?
     public var valid: Bool?
+
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
 
     enum CodingKeys: String, CodingKey {
         case city = "city"
@@ -389,7 +417,7 @@ public class NextOfKin: Codable {
         self.valid = Bool()
     }
 
-    public init(city: String, country: String, dateOfBirth: String, name: String, nameAlternate: String, phoneHome: String, phoneMobile: String, postcode: String, relationship: String, relationshipAlternate: String, state: String, streetFirst: String, streetSecond: String, valid: Bool) {
+    public init(city: String?, country: String?, dateOfBirth: String?, name: String?, nameAlternate: String?, phoneHome: String?, phoneMobile: String?, postcode: String?, relationship: String?, relationshipAlternate: String?, state: String?, streetFirst: String?, streetSecond: String?, valid: Bool?) {
         self.city = city
         self.country = country
         self.dateOfBirth = dateOfBirth
@@ -419,6 +447,9 @@ public class PassportVisa: Codable {
     public var usVisaCD: Bool?
     public var usVisaCDDateOfExpiry: String?
 
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
+
     enum CodingKeys: String, CodingKey {
         case australianMaritimeCrewVisa = "Australian_Maritime_Crew_Visa"
         case country = "country"
@@ -443,7 +474,7 @@ public class PassportVisa: Codable {
         self.usVisaCDDateOfExpiry = String()
     }
 
-    public init(australianMaritimeCrewVisa: Bool, country: String, dateOfExpiry: String, dateOfIssue: String, ecnr: Bool, number: String, placeOfIssue: String, usVisaCD: Bool, usVisaCDDateOfExpiry: String) {
+    public init(australianMaritimeCrewVisa: Bool?, country: String?, dateOfExpiry: String?, dateOfIssue: String?, ecnr: Bool?, number: String?, placeOfIssue: String?, usVisaCD: Bool?, usVisaCDDateOfExpiry: String?) {
         self.australianMaritimeCrewVisa = australianMaritimeCrewVisa
         self.country = country
         self.dateOfExpiry = dateOfExpiry
@@ -475,6 +506,9 @@ public class PersonalInformation: Codable {
     public var yellowFeverVaccinationBATCHLOTNumber: String?
     public var yellowFeverVaccinationDateOfExpiry: String?
     public var yellowFeverVaccinationDateOfIssue: String?
+
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
 
     enum CodingKeys: String, CodingKey {
         case bloodGroup = "bloodGroup"
@@ -516,7 +550,7 @@ public class PersonalInformation: Codable {
         self.yellowFeverVaccinationDateOfIssue = String()
     }
 
-    public init(bloodGroup: String, boilerSuitSize: String, dateOfBirth: String, firstName: String, height: String, lastName: String, middleName: String, nationality: String, placeOfBirth: String, shoeSize: String, smoker: Bool, unionMembership: Bool, vegetarian: Bool, weight: String, yellowFeverVaccinationBATCHLOTNumber: String, yellowFeverVaccinationDateOfExpiry: String, yellowFeverVaccinationDateOfIssue: String) {
+    public init(bloodGroup: String?, boilerSuitSize: String?, dateOfBirth: String?, firstName: String?, height: String?, lastName: String?, middleName: String?, nationality: String?, placeOfBirth: String?, shoeSize: String?, smoker: Bool?, unionMembership: Bool?, vegetarian: Bool?, weight: String?, yellowFeverVaccinationBATCHLOTNumber: String?, yellowFeverVaccinationDateOfExpiry: String?, yellowFeverVaccinationDateOfIssue: String?) {
         self.bloodGroup = bloodGroup
         self.boilerSuitSize = boilerSuitSize
         self.dateOfBirth = dateOfBirth
@@ -543,6 +577,9 @@ public class QuickVersion: Codable {
     public var remarks: String?
     public var yearsOfExperience: String?
 
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
+
     enum CodingKeys: String, CodingKey {
         case nearestOffice = "nearestOffice"
         case remarks = "Remarks"
@@ -555,7 +592,7 @@ public class QuickVersion: Codable {
         self.yearsOfExperience = String()
     }
 
-    public init(nearestOffice: String, remarks: String, yearsOfExperience: String) {
+    public init(nearestOffice: String?, remarks: String?, yearsOfExperience: String?) {
         self.nearestOffice = nearestOffice
         self.remarks = remarks
         self.yearsOfExperience = yearsOfExperience
@@ -568,6 +605,9 @@ public class SeaServiceExperience: Codable {
     public var engineType: String?
     public var vesselSize: String?
     public var vesselType: String?
+
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
 
     enum CodingKeys: String, CodingKey {
         case brakeHorsepower = "brakeHorsepower"
@@ -583,7 +623,7 @@ public class SeaServiceExperience: Codable {
         self.vesselType = String()
     }
 
-    public init(brakeHorsepower: String, engineType: String, vesselSize: String, vesselType: String) {
+    public init(brakeHorsepower: String?, engineType: String?, vesselSize: String?, vesselType: String?) {
         self.brakeHorsepower = brakeHorsepower
         self.engineType = engineType
         self.vesselSize = vesselSize
