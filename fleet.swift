@@ -122,7 +122,7 @@ public class BasicJobApplication: Codable {
     public var passportVisa: PassportVisa?
     public var personalInformation: PersonalInformation?
     public var quickVersion: QuickVersion?
-    public var seamansBookData: SeamansBookData?
+    public var seamansBook: SeamansBook?
     public var seaServiceExperience: SeaServiceExperience?
     public var submitDate: String?
     public var submitID: String?
@@ -137,7 +137,7 @@ public class BasicJobApplication: Codable {
         case passportVisa = "passportVisa"
         case personalInformation = "personalInformation"
         case quickVersion = "quickVersion"
-        case seamansBookData = "seamansBookData"
+        case seamansBook = "seamansBook"
         case seaServiceExperience = "seaServiceExperience"
         case submitDate = "submitDate"
         case submitID = "submitID"
@@ -153,14 +153,14 @@ public class BasicJobApplication: Codable {
         self.passportVisa = PassportVisa()
         self.personalInformation = PersonalInformation()
         self.quickVersion = QuickVersion()
-        self.seamansBookData = SeamansBookData()
+        self.seamansBook = SeamansBook()
         self.seaServiceExperience = SeaServiceExperience()
         self.submitDate = String()
         self.submitID = String()
         self.type = String()
     }
 
-    public init(appliedPosition: AppliedPosition?, certificatesOfCompetency: CertificatesOfCompetency?, contactInformation: ContactInformation?, familyData: FamilyData?, nextOfKin: NextOfKin?, passportVisa: PassportVisa?, personalInformation: PersonalInformation?, quickVersion: QuickVersion?, seamansBookData: SeamansBookData?, seaServiceExperience: SeaServiceExperience?, submitDate: String?, submitID: String?, type: String?) {
+    public init(appliedPosition: AppliedPosition?, certificatesOfCompetency: CertificatesOfCompetency?, contactInformation: ContactInformation?, familyData: FamilyData?, nextOfKin: NextOfKin?, passportVisa: PassportVisa?, personalInformation: PersonalInformation?, quickVersion: QuickVersion?, seamansBook: SeamansBook?, seaServiceExperience: SeaServiceExperience?, submitDate: String?, submitID: String?, type: String?) {
         self.appliedPosition = appliedPosition
         self.certificatesOfCompetency = certificatesOfCompetency
         self.contactInformation = contactInformation
@@ -169,7 +169,7 @@ public class BasicJobApplication: Codable {
         self.passportVisa = passportVisa
         self.personalInformation = personalInformation
         self.quickVersion = quickVersion
-        self.seamansBookData = seamansBookData
+        self.seamansBook = seamansBook
         self.seaServiceExperience = seaServiceExperience
         self.submitDate = submitDate
         self.submitID = submitID
@@ -620,7 +620,7 @@ public class SeaServiceExperience: Codable {
     // MARK: - Fleet Related Code
 }
 
-public class SeamansBookData: Codable {
+public class SeamansBook: Codable {
     public var liberian: Liberian?
     public var marshelIslands: Liberian?
     public var norwagian: Liberian?
@@ -716,7 +716,7 @@ public class OtherBook: Codable {
 public extension BasicJobApplication {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(BasicJobApplication.self, from: data)
-        self.init(appliedPosition: me.appliedPosition, certificatesOfCompetency: me.certificatesOfCompetency, contactInformation: me.contactInformation, familyData: me.familyData, nextOfKin: me.nextOfKin, passportVisa: me.passportVisa, personalInformation: me.personalInformation, quickVersion: me.quickVersion, seamansBookData: me.seamansBookData, seaServiceExperience: me.seaServiceExperience, submitDate: me.submitDate, submitID: me.submitID, type: me.type)
+        self.init(appliedPosition: me.appliedPosition, certificatesOfCompetency: me.certificatesOfCompetency, contactInformation: me.contactInformation, familyData: me.familyData, nextOfKin: me.nextOfKin, passportVisa: me.passportVisa, personalInformation: me.personalInformation, quickVersion: me.quickVersion, seamansBook: me.seamansBook, seaServiceExperience: me.seaServiceExperience, submitDate: me.submitDate, submitID: me.submitID, type: me.type)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -999,9 +999,9 @@ public extension SeaServiceExperience {
     }
 }
 
-public extension SeamansBookData {
+public extension SeamansBook {
     public convenience init(data: Data) throws {
-        let me = try JSONDecoder().decode(SeamansBookData.self, from: data)
+        let me = try JSONDecoder().decode(SeamansBook.self, from: data)
         self.init(liberian: me.liberian, marshelIslands: me.marshelIslands, norwagian: me.norwagian, otherBooks: me.otherBooks, panamanian: me.panamanian)
     }
 
