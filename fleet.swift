@@ -95,6 +95,20 @@ extension Decodable {
     }
 }
 
+public class JobApplication: BasicJobApplication {
+    public static var full = JobApplication()
+    public static var quick = JobApplication()
+
+    public func setValue(_ value: Any, toFieldWithKey key: ApplicationFieldKey) {
+
+    }
+
+    public func getValue(key: ApplicationFieldKey) -> Any? {
+        return ""
+    }
+}
+
+
 
 public class BasicJobApplication: Codable {
     public var appliedPosition: AppliedPosition?
