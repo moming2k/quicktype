@@ -122,7 +122,7 @@ public class BasicJobApplication: Codable {
     public var passportVisa: PassportVisa?
     public var personalInformation: PersonalInformation?
     public var quickVersion: QuickVersion?
-    public var seamansBook: SeamansBook?
+    public var seamansBookData: SeamansBookData?
     public var seaServiceExperience: SeaServiceExperience?
     public var submitDate: String?
     public var submitID: String?
@@ -137,7 +137,7 @@ public class BasicJobApplication: Codable {
         case passportVisa = "passportVisa"
         case personalInformation = "personalInformation"
         case quickVersion = "quickVersion"
-        case seamansBook = "seamansBook"
+        case seamansBookData = "seamansBookData"
         case seaServiceExperience = "seaServiceExperience"
         case submitDate = "submitDate"
         case submitID = "submitID"
@@ -153,14 +153,14 @@ public class BasicJobApplication: Codable {
         self.passportVisa = PassportVisa()
         self.personalInformation = PersonalInformation()
         self.quickVersion = QuickVersion()
-        self.seamansBook = SeamansBook()
+        self.seamansBookData = SeamansBookData()
         self.seaServiceExperience = SeaServiceExperience()
         self.submitDate = String()
         self.submitID = String()
         self.type = String()
     }
 
-    public init(appliedPosition: AppliedPosition?, certificatesOfCompetency: CertificatesOfCompetency?, contactInformation: ContactInformation?, familyData: FamilyData?, nextOfKin: NextOfKin?, passportVisa: PassportVisa?, personalInformation: PersonalInformation?, quickVersion: QuickVersion?, seamansBook: SeamansBook?, seaServiceExperience: SeaServiceExperience?, submitDate: String?, submitID: String?, type: String?) {
+    public init(appliedPosition: AppliedPosition?, certificatesOfCompetency: CertificatesOfCompetency?, contactInformation: ContactInformation?, familyData: FamilyData?, nextOfKin: NextOfKin?, passportVisa: PassportVisa?, personalInformation: PersonalInformation?, quickVersion: QuickVersion?, seamansBookData: SeamansBookData?, seaServiceExperience: SeaServiceExperience?, submitDate: String?, submitID: String?, type: String?) {
         self.appliedPosition = appliedPosition
         self.certificatesOfCompetency = certificatesOfCompetency
         self.contactInformation = contactInformation
@@ -169,7 +169,7 @@ public class BasicJobApplication: Codable {
         self.passportVisa = passportVisa
         self.personalInformation = personalInformation
         self.quickVersion = quickVersion
-        self.seamansBook = seamansBook
+        self.seamansBookData = seamansBookData
         self.seaServiceExperience = seaServiceExperience
         self.submitDate = submitDate
         self.submitID = submitID
@@ -620,12 +620,12 @@ public class SeaServiceExperience: Codable {
     // MARK: - Fleet Related Code
 }
 
-public class SeamansBook: Codable {
-    public var liberian: Liberian?
-    public var marshelIslands: Liberian?
-    public var norwagian: Liberian?
-    public var otherBooks: [OtherBook]?
-    public var panamanian: Liberian?
+public class SeamansBookData: Codable {
+    public var liberian: SeamansBook?
+    public var marshelIslands: SeamansBook?
+    public var norwagian: SeamansBook?
+    public var otherBooks: [SeamansBook]?
+    public var panamanian: SeamansBook?
 
     enum CodingKeys: String, CodingKey {
         case liberian = "liberian"
@@ -636,14 +636,14 @@ public class SeamansBook: Codable {
     }
 
     public init() {
-        self.liberian = Liberian()
-        self.marshelIslands = Liberian()
-        self.norwagian = Liberian()
-        self.otherBooks = [OtherBook]()
-        self.panamanian = Liberian()
+        self.liberian = SeamansBook()
+        self.marshelIslands = SeamansBook()
+        self.norwagian = SeamansBook()
+        self.otherBooks = [SeamansBook]()
+        self.panamanian = SeamansBook()
     }
 
-    public init(liberian: Liberian?, marshelIslands: Liberian?, norwagian: Liberian?, otherBooks: [OtherBook]?, panamanian: Liberian?) {
+    public init(liberian: SeamansBook?, marshelIslands: SeamansBook?, norwagian: SeamansBook?, otherBooks: [SeamansBook]?, panamanian: SeamansBook?) {
         self.liberian = liberian
         self.marshelIslands = marshelIslands
         self.norwagian = norwagian
@@ -653,28 +653,7 @@ public class SeamansBook: Codable {
     // MARK: - Fleet Related Code
 }
 
-public class Liberian: Codable {
-    public var bookID: String?
-    public var country: String?
-
-    enum CodingKeys: String, CodingKey {
-        case bookID = "bookID"
-        case country = "country"
-    }
-
-    public init() {
-        self.bookID = String()
-        self.country = String()
-    }
-
-    public init(bookID: String?, country: String?) {
-        self.bookID = bookID
-        self.country = country
-    }
-    // MARK: - Fleet Related Code
-}
-
-public class OtherBook: Codable {
+public class SeamansBook: Codable {
     public var bookID: String?
     public var country: String?
     public var dateOfExpiry: String?
@@ -716,7 +695,7 @@ public class OtherBook: Codable {
 public extension BasicJobApplication {
     public convenience init(data: Data) throws {
         let me = try JSONDecoder().decode(BasicJobApplication.self, from: data)
-        self.init(appliedPosition: me.appliedPosition, certificatesOfCompetency: me.certificatesOfCompetency, contactInformation: me.contactInformation, familyData: me.familyData, nextOfKin: me.nextOfKin, passportVisa: me.passportVisa, personalInformation: me.personalInformation, quickVersion: me.quickVersion, seamansBook: me.seamansBook, seaServiceExperience: me.seaServiceExperience, submitDate: me.submitDate, submitID: me.submitID, type: me.type)
+        self.init(appliedPosition: me.appliedPosition, certificatesOfCompetency: me.certificatesOfCompetency, contactInformation: me.contactInformation, familyData: me.familyData, nextOfKin: me.nextOfKin, passportVisa: me.passportVisa, personalInformation: me.personalInformation, quickVersion: me.quickVersion, seamansBookData: me.seamansBookData, seaServiceExperience: me.seaServiceExperience, submitDate: me.submitDate, submitID: me.submitID, type: me.type)
     }
 
     public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -999,9 +978,9 @@ public extension SeaServiceExperience {
     }
 }
 
-public extension SeamansBook {
+public extension SeamansBookData {
     public convenience init(data: Data) throws {
-        let me = try JSONDecoder().decode(SeamansBook.self, from: data)
+        let me = try JSONDecoder().decode(SeamansBookData.self, from: data)
         self.init(liberian: me.liberian, marshelIslands: me.marshelIslands, norwagian: me.norwagian, otherBooks: me.otherBooks, panamanian: me.panamanian)
     }
 
@@ -1025,35 +1004,9 @@ public extension SeamansBook {
     }
 }
 
-public extension Liberian {
+public extension SeamansBook {
     public convenience init(data: Data) throws {
-        let me = try JSONDecoder().decode(Liberian.self, from: data)
-        self.init(bookID: me.bookID, country: me.country)
-    }
-
-    public convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
-        guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
-        }
-        try self.init(data: data)
-    }
-
-    public convenience init(fromURL url: URL) throws {
-        try self.init(data: try Data(contentsOf: url))
-    }
-
-    public func jsonData() throws -> Data {
-        return try JSONEncoder().encode(self)
-    }
-
-    public func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
-        return String(data: try self.jsonData(), encoding: encoding)
-    }
-}
-
-public extension OtherBook {
-    public convenience init(data: Data) throws {
-        let me = try JSONDecoder().decode(OtherBook.self, from: data)
+        let me = try JSONDecoder().decode(SeamansBook.self, from: data)
         self.init(bookID: me.bookID, country: me.country, dateOfExpiry: me.dateOfExpiry, dateOfIssue: me.dateOfIssue, number: me.number, placeOfIssue: me.placeOfIssue)
     }
 
