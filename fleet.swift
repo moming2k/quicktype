@@ -100,6 +100,7 @@ public class JobApplication: BasicJobApplication {
     public static var quick = JobApplication()
 
     public var profilePicture: UIImage?
+    public var profilePictureURL: String?
 
     public func setValue(_ value: Any, toFieldWithKey key: ApplicationFieldKey) {
 
