@@ -578,7 +578,7 @@ extension Member {
     private getProtocolString = (): Sourcelike => {
         let protocols: string[] = [];
         if (!this._justTypes) {
-            protocols.push("Codable");
+            protocols.push("NSObject, Codable");
         }
         return protocols.length > 0 ? ": " + protocols.join(", ") : "";
     };
@@ -732,7 +732,7 @@ extension Member {
                     if (properties.length > 0) properties.push(", ");
                     properties.push(name, ": ", swiftType(p));
                 });
-                this.emitBlockWithAccess(["init()"], () => {
+                this.emitBlockWithAccess(["override init()"], () => {
                     this.forEachClassProperty(c, "none", (name, _, p) => {
                         this.emitLine("self.", name, " = ", swiftType(p), "()");
                     });
