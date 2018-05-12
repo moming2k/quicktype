@@ -507,6 +507,24 @@ extension SeamansBookData {
 }
 
 extension SeamansBook {
+    public func setValue(_ value: Any, toFieldWithKey key: ApplicationFieldKey) {
+        
+        // TODO
+    }
+    
+    public func getValue(key: ApplicationFieldKey) -> Any? {
+        
+        switch key {
+            case .seamansBook_bookID:           return bookID
+            case .seamansBook_country:          return country
+            case .seamansBook_number:           return number
+            case .seamansBook_place_of_issue:   return placeOfIssue
+            case .seamansBook_date_of_issue:    return dateOfIssue
+            case .seamansBook_date_of_expiry:   return dateOfExpiry
+            default: return nil
+        }
+    }
+
     public func clear() {
         
         self.number = nil
@@ -514,6 +532,36 @@ extension SeamansBook {
         self.placeOfIssue = nil
         self.dateOfExpiry = nil
     }
+}
+
+extension Member {
+    public func setValue(_ value: Any, toFieldWithKey key: ApplicationFieldKey) {
+        
+        // TODO
+    }
+    
+    public func getValue(key: ApplicationFieldKey) -> Any? {
+        
+        switch key {
+            case .familyData_first_name:        return firstName
+            case .familyData_last_name:         return lastName
+            case .familyData_passport_number:   return passportNumber
+            case .familyData_place_of_issue:    return placeOfIssue
+            case .familyData_relationship:      return relationship
+            case .familyData_gender:            return gender
+            case .familyData_date_of_birth:     return dateOfBirth
+            case .familyData_date_of_expiry:    return dateOfExpiry
+            default: return nil
+        }
+    }
+
+    // public func clear() {
+        
+    //     self.number = nil
+    //     self.dateOfIssue = nil
+    //     self.placeOfIssue = nil
+    //     self.dateOfExpiry = nil
+    // }
 }
 
 `);
