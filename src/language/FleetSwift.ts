@@ -506,6 +506,16 @@ extension SeamansBookData {
     }
 }
 
+extension SeamansBook {
+    public func clear() {
+        
+        self.number = nil
+        self.dateOfIssue = nil
+        self.placeOfIssue = nil
+        self.dateOfExpiry = nil
+    }
+}
+
 `);
 
         if (!this._justTypes && this._alamofire) {
