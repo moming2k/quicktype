@@ -111,6 +111,13 @@ public class JobApplication: BasicJobApplication {
     }
 }
 
+extension SeamansBookData {
+    public static func defaultCountries() -> [String]
+    {
+        return ["Norway", "Liberia", "Panama", "Marshall Islands"]
+    }
+}
+
 
 
 public class BasicJobApplication: Codable {
