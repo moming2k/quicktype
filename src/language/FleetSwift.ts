@@ -499,6 +499,13 @@ public class JobApplication: BasicJobApplication {
     }
 }
 
+extension SeamansBookData {
+    public static func defaultCountries() -> [String]
+    {
+        return ["Norway", "Liberia", "Panama", "Marshall Islands"]
+    }
+}
+
 `);
 
         if (!this._justTypes && this._alamofire) {
@@ -562,13 +569,13 @@ public class JobApplication: BasicJobApplication {
             }
         };
 
-        const removeFirstOccurrence = (str: string, searchstr: string) => {
-            let index = str.indexOf(searchstr);
-            if (index === -1) {
-                return str;
-            }
-            return str.slice(0, index) + str.slice(index + searchstr.length);
-        };
+        // const removeFirstOccurrence = (str: string, searchstr: string) => {
+        //     let index = str.indexOf(searchstr);
+        //     if (index === -1) {
+        //         return str;
+        //     }
+        //     return str.slice(0, index) + str.slice(index + searchstr.length);
+        // };
 
         const swiftTypeForceOptional = (p: ClassProperty) => {
             return [this.swiftType(p.type, true, true), "?"];
@@ -620,11 +627,11 @@ public class JobApplication: BasicJobApplication {
                 emitLastProperty();
             } else {
                 this.forEachClassProperty(c, "none", (name, jsonName, p) => {
-                    let jsonNameParts = jsonName.split("_");
-                    let finalName = "";
-                    if (jsonNameParts.length > 1) {
-                        finalName = removeFirstOccurrence(name + "", jsonNameParts[0]);
-                    }
+                    // let jsonNameParts = jsonName.split("_");
+                    // let finalName = "";
+                    // if (jsonNameParts.length > 1) {
+                    //     finalName = removeFirstOccurrence(name + "", jsonNameParts[0]);
+                    // }
                     const description = this.descriptionForClassProperty(c, jsonName);
                     this.emitDescription(description);
                     this.emitLine(this.accessLevel, "var ", name, ": ", swiftTypeForceOptional(p));
